@@ -4,7 +4,7 @@
 
 ```
 cd ~
-git clone https://github.com/Remchi/dotfiles.git .dotfiles
+git clone git@github.com:matthewmarcos94/dotfiles.git .dotfiles
 ```
 
 * create symbolic links to config files
