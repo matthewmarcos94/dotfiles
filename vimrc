@@ -36,6 +36,7 @@ NeoBundle 'https://github.com/airblade/vim-gitgutter'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'mxw/vim-jsx'
+NeoBundle 'git@github.com:altercation/vim-colors-solarized.git'
 
 " End install plugins
 call neobundle#end()
@@ -54,11 +55,12 @@ let mapleader = "\<Space>"
 syntax on
 filetype plugin on
 
-color molokai 
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
 set showcmd
 set number "Line numbers
 set numberwidth=5
+
+color molokai
 
 set autoindent          " Who does not like autoindent?
 set foldenable          " enable line folding
@@ -66,12 +68,12 @@ set foldenable          " enable line folding
 set showmatch           " highlight matching [{()}]
 
 set cursorline
-:hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
+:hi CursorLine   cterm=NONE ctermbg=DarkGray ctermfg=white
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 set textwidth=120
-set colorcolumn=+1
+" set colorcolumn=+1
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
