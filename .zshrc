@@ -27,10 +27,10 @@ ZSH_THEME="cobalt2"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -49,13 +49,14 @@ ZSH_THEME="cobalt2"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # TMUX config things. Please refer to https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
-ZSH_TMUX_AUTOSTART="true"
+# ZSH_TMUX_FIXTERM_WITH_256COLOR="true"
+# ZSH_TMUX_AUTOSTART="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract tmux tmuxinator safe-paste zsh-256color zsh-nvm node npm)
+plugins=(git extract tmux tmuxinator safe-paste zsh-256color zsh-nvm node npm web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,6 +109,8 @@ alias c='clear'
 alias tp='sudo touchpad'
 alias tmux="tmux -2"
 alias SP="cd /home/matt/Dropbox/Academics/SP"
+alias setclip='xclip -selection c'
+alias getclip='xclip -selection clipboard -o'
 
 # Here are some custom functions
 function makepdf() {
