@@ -58,7 +58,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract tmux tmuxinator safe-paste zsh-256color zsh-nvm node npm web-search)
+plugins=(git extract tmux tmuxinator safe-paste zsh-256color zsh-nvm node npm web-search copydir copyfile cp colorize command-not-found history fasd debian battery quote)
 
 source $ZSH/oh-my-zsh.sh
 
