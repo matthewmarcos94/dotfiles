@@ -123,3 +123,7 @@ function makepdf() {
 function mcd() {
     mkdir $1 && cd $1
 }
+
+function define() {
+    dict $1 | less
+}
