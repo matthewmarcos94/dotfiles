@@ -119,3 +119,7 @@ function makepdf() {
     rm *.aux *.pdf *.bbl *.blg *.dvi *.log
     latex $1 && bibtex $1 && latex $1 && pdflatex $1 && evince $1".pdf" &
 }
+
+function mcd() {
+    mkdir $1 && cd $1
+}
