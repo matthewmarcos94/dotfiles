@@ -37,7 +37,11 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'git@github.com:altercation/vim-colors-solarized.git'
-
+NeoBundle 'https://github.com/osyo-manga/vim-over'
+NeoBundle 'https://github.com/SirVer/ultisnips'
+NeoBundle 'https://github.com/epilande/vim-react-snippets'
+NeoBundle 'https://github.com/JamshedVesuna/vim-markdown-preview'
+"
 " End install plugins
 call neobundle#end()
 
@@ -56,6 +60,8 @@ syntax on
 filetype plugin on
 
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
+set shiftround          " >> and << will bring to the next multiuple of tabstop"
+
 set showcmd
 set number "Line numbers
 set numberwidth=5
@@ -83,17 +89,28 @@ set relativenumber
 " Clipboard stuff
 map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
 
+" Required for Markdown Preview https://github.com/JamshedVesuna/vim-markdown-preview
+let vim_markdown_preview_github=1
+
 " Nerd Commenter
 let g:NERDTrimTrailingWhitespace = 1
+
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
 
+" Markdown Preview change hotkey from Control P to something else because I have controlP plugin which I love
+let vim_markdown_preview_hotkey='<C-\>'
+
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-let g:user_emmet_leader_key='<C-E>'
+let g:user_emmet_leader_key='<C-e>'     " If expanding an emmet abbreviation, hit <C-e> followed by a ,
+
+" This is mapping for the snippets I use: https://github.com/SirVer/ultisnips
+let g:UltiSnipsExpandTrigger='<C-l>'
 
 " Quick-escape to normal mode
 imap jj <esc>
@@ -119,8 +136,8 @@ nnoremap <leader>rv :source $MYVIMRC<CR>
 
 " multiple tabs
 noremap tn :tabnew<Space>
-noremap tk :tabnext<CR>
-noremap tj :tabprev<CR>
+noremap tj :tabnext<CR>
+noremap tk :tabprev<CR>
 noremap tf :tabfirst<CR>
 noremap tl :tablast<CR>
 
@@ -133,5 +150,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <leader>vs :tabnew $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>q! :q!<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
+
