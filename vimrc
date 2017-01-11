@@ -1,4 +1,4 @@
-" Note: Skip initialization for vim-tiny or vim-small.
+"thanaelkane/vim-indent-guides Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
 if &compatible
@@ -41,7 +41,7 @@ NeoBundle 'https://github.com/osyo-manga/vim-over'
 NeoBundle 'https://github.com/SirVer/ultisnips'
 NeoBundle 'https://github.com/epilande/vim-react-snippets'
 NeoBundle 'https://github.com/JamshedVesuna/vim-markdown-preview'
-"
+
 " End install plugins
 call neobundle#end()
 
@@ -86,8 +86,15 @@ set splitbelow
 set splitright
 set relativenumber
 
+" To make vim autoread files changed by Git http://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim
+set autoread
+
 " Clipboard stuff
 map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+
+" CtrlP Vim
+let g:ctrlp_cmd='CtrlP :pwd'
+
 
 " Required for Markdown Preview https://github.com/JamshedVesuna/vim-markdown-preview
 let vim_markdown_preview_github=1
@@ -97,6 +104,15 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+
+" https://github.com/nathanaelkane/vim-indent-guides For vim imdents
+set sw=4 "noet
+" let g:indent_guides_start_level=4
+" let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
+autocmd VimEnter * IndentGuidesToggle
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>

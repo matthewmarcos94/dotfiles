@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/matt/.oh-my-zsh
+export ZSH="/home/matt/.oh-my-zsh"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
@@ -113,6 +113,7 @@ alias tmux="tmux -2"
 alias SP="cd /home/matt/Dropbox/Academics/SP"
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
+alias rm='trash'
 
 # Here are some custom functions
 function makepdf() {
