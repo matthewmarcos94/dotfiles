@@ -39,10 +39,11 @@ NeoBundle 'git@github.com:altercation/vim-colors-solarized.git'
 NeoBundle 'https://github.com/osyo-manga/vim-over'
 NeoBundle 'https://github.com/epilande/vim-react-snippets'
 NeoBundle 'https://github.com/JamshedVesuna/vim-markdown-preview'
-NeoBundle 'https://github.com/dougnukem/vim-swap-lines'
 NeoBundle 'https://github.com/majutsushi/tagbar'
 NeoBundle 'https://github.com/tpope/vim-surround'
-
+NeoBundle 'tpope/vim-repeat'
+"
+" NeoBundle 'https://github.com/dougnukem/vim-swap-lines'
 " NeoBundle 'https://github.com/SirVer/ultisnips'
 " NeoBundle 'https://github.com/vim-syntastic/syntastic'
 
@@ -182,14 +183,14 @@ vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 " vnoremap <S-k> :m '<-2<CR>gv=gv
 " vnoremap <S-j> :m '>+1<CR>gv=gv
 
-" nnoremap <C-S-k> :m -2<CR>==
-" nnoremap <C-S-j> :m +1<CR>==
-" inoremap <C-S-k> :m -2<CR>==
-" inoremap <C-S-j> :m +1<CR>==
-" vnoremap <C-S-k> :m -2<CR>==
-" vnoremap <C-S-j> :m +1<CR>==
+nnoremap <C-K> :m -2<CR>==
+nnoremap <C-J> :m +1<CR>==
+inoremap <C-K> :m -2<CR>==
+inoremap <C-J> :m +1<CR>==
+vnoremap <C-K> :m -2<CR>==
+vnoremap <C-J> :m +1<CR>==
 
 "Something for remapping the swap
-" nnoremap <silent> <S-K> :call <SID>swap_up()<CR>
-" nnoremap <silent> <S-J> :call <SID>swap_down()<CR>
+" nnoremap <silent> <C-K> :call <SID>swap_up()<CR>
+" nnoremap <silent> <C-J> :call <SID>swap_down()<CR>
 
