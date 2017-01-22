@@ -131,7 +131,7 @@ let g:html_indent_tags = 'li\|p'
 let g:user_emmet_leader_key='<C-e>'     " If expanding an emmet abbreviation, hit <C-e> followed by a ,
 
 " This is mapping for the snippets I use: https://github.com/SirVer/ultisnips
-let g:UltiSnipsExpandTrigger='<C-l>'
+let g:UltiSnipsExpandTrigger='<C-Tab>'
 
 " Quick-escape to normal mode
 imap jj <esc>
@@ -174,6 +174,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>q! :q!<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>y "+y<CR>
+nnoremap <leader>p "+p<CR>
 
 " Move lines up and down: http://vim.wikia.com/wiki/Moving_lines_up_or_down
 " nnoremap <A-k> :m -2<CR>==
@@ -183,14 +185,19 @@ vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 " vnoremap <S-k> :m '<-2<CR>gv=gv
 " vnoremap <S-j> :m '>+1<CR>gv=gv
 
-nnoremap <C-K> :m -2<CR>==
-nnoremap <C-J> :m +1<CR>==
-inoremap <C-K> :m -2<CR>==
-inoremap <C-J> :m +1<CR>==
-vnoremap <C-K> :m -2<CR>==
-vnoremap <C-J> :m +1<CR>==
+" nnoremap <C-K> :m -2<CR>==
+" nnoremap <C-J> :m +1<CR>==
+" inoremap <C-K> :m -2<CR>==
+" inoremap <C-J> :m +1<CR>==
+" vnoremap <C-K> :m -2<CR>==
+" vnoremap <C-J> :m +1<CR>==
 
 "Something for remapping the swap
 " nnoremap <silent> <C-K> :call <SID>swap_up()<CR>
 " nnoremap <silent> <C-J> :call <SID>swap_down()<CR>
 
+"CtrlP Ignore settings
+" https://github.com/ctrlpvim/ctrlp.vim
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
