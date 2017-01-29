@@ -145,7 +145,8 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 " NerdTree Shortcut
 nnoremap <C-b> :NERDTreeToggle<CR>
-"
+let NERDTreeShowHidden=1
+
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -199,5 +200,6 @@ nnoremap <leader>p "+p<CR>
 "CtrlP Ignore settings
 " https://github.com/ctrlpvim/ctrlp.vim
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_show_hidden = 1

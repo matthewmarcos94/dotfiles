@@ -114,6 +114,7 @@ alias SP="cd /home/matt/Dropbox/Academics/SP"
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias rm='trash'
+alias getpwd='pwd | setclip'
 
 # Here are some custom functions
 function makepdf() {
