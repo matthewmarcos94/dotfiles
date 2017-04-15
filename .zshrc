@@ -96,6 +96,7 @@ source $ZSH/oh-my-zsh.sh
 alias battery="sudo tlp-stat"
 alias work="cd ~/Documents/Code"
 alias ytd="youtube-dl -c"
+alias ytdp="youtube-dl -c -o '%(playlist_index)s. %(title)s.%(ext)s'"
 alias wget="wget -c"
 alias vs="code"
 alias vimrc="vim ~/.vimrc"

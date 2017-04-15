@@ -46,11 +46,11 @@ NeoBundle 'https://github.com/JamshedVesuna/vim-markdown-preview'
 NeoBundle 'https://github.com/majutsushi/tagbar'
 NeoBundle 'https://github.com/tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
-"
+
 " NeoBundle 'https://github.com/dougnukem/vim-swap-lines'
 " NeoBundle 'https://github.com/SirVer/ultisnips'
 " NeoBundle 'https://github.com/vim-syntastic/syntastic'
-"
+
 " Best plugins:
 " You complete me
 " vim-latex
@@ -166,7 +166,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>rv :source $MYVIMRC<CR>
 
 " multiple tabs
-noremap tn :tabnew<Space>
+noremap tn :tabnew<CR>
 noremap tj :tabnext<CR>
 noremap tk :tabprev<CR>
 noremap tf :tabfirst<CR>
@@ -182,6 +182,8 @@ nnoremap <leader>vs :tabnew $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>q! :q!<CR>
+nnoremap <leader>wq :wq<CR>
+nnoremap <leader>wqa :wqa<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>y "+y<CR>
