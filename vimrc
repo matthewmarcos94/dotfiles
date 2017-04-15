@@ -5,6 +5,10 @@ if &compatible
 set nocompatible               " Be iMproved
 endif
 
+" Move swp files to separate folder
+" https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files
+set directory^=$HOME/.vim/tmp//
+
 " Required:
 set runtimepath^=~/.vim/bundle/neobundle.vim/
 
@@ -46,6 +50,11 @@ NeoBundle 'tpope/vim-repeat'
 " NeoBundle 'https://github.com/dougnukem/vim-swap-lines'
 " NeoBundle 'https://github.com/SirVer/ultisnips'
 " NeoBundle 'https://github.com/vim-syntastic/syntastic'
+"
+" Best plugins:
+" You complete me
+" vim-latex
+" localvim
 
 " End install plugins
 call neobundle#end()
@@ -89,7 +98,7 @@ set textwidth=120
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-set relativenumber
+" set relativenumber "Do you really use this? Kakatamad magtype ng + or - naman when transferring lines
 
 " To make vim autoread files changed by Git http://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim
 set autoread
@@ -203,5 +212,5 @@ nnoremap <leader>p "+p<CR>
 " Multi Cursors
 
 " set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|.meteor'
 let g:ctrlp_show_hidden = 1

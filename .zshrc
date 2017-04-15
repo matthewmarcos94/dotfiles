@@ -113,8 +113,10 @@ alias tmux="tmux -2"
 alias SP="cd /home/matt/Dropbox/Academics/SP"
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
-alias rm='trash'
 alias getpwd='pwd | setclip'
+alias download='aria2c -x 16 -s 16 -k 1M'
+alias v='vim'
+alias start_mongo='sudo service mongod start'
 
 # Here are some custom functions
 function makepdf() {
