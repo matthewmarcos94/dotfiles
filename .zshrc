@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/matt/.oh-my-zsh"
+# export ZSH="/home/matt/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
@@ -30,6 +31,7 @@ ZSH_THEME="cobalt2"
 
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
+
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -118,11 +120,13 @@ alias getpwd='pwd | setclip'
 alias download='aria2c -x 16 -s 16 -k 1M'
 alias v='vim'
 alias start_mongo='sudo service mongod start'
+alias cleartex="rm *.aux *.pdf *.bbl *.blg *.dvi *.log"
 
 # Here are some custom functions
 function makepdf() {
     rm *.aux *.pdf *.bbl *.blg *.dvi *.log
-    latex $1 && bibtex $1 && latex $1 && pdflatex $1 && evince $1".pdf" &
+    # latex $1 && bibtex $1 && latex $1 && pdflatex $1 && evince $1".pdf" &
+    pdflatex $1 && bibtex $1 && pdflatex $1 && pdflatex $1 && pdflatex $1 && evince $1".pdf" &
 }
 
 function mcd() {

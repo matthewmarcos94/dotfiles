@@ -2,7 +2,7 @@
 if 0 | endif
 
 if &compatible
-set nocompatible               " Be iMproved
+    set nocompatible               " Be iMproved
 endif
 
 " Move swp files to separate folder
@@ -18,6 +18,23 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Statuslines
+set laststatus=2
+set statusline=%f
+set statusline+=(%{FileSize()})
+
+function! FileSize()
+    let bytes = getfsize(expand("%:p"))
+    if bytes <= 0
+        return ""
+    endif
+    if bytes < 1024
+        return bytes
+    else
+        return (bytes / 1024) . "K"
+    endif
+endfunction
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
@@ -98,7 +115,7 @@ set textwidth=120
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-" set relativenumber "Do you really use this? Kakatamad magtype ng + or - naman when transferring lines
+set relativenumber "Do you really use this? Kakatamad magtype ng + or - naman when transferring lines
 
 " To make vim autoread files changed by Git http://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim
 set autoread
