@@ -9,37 +9,15 @@ endif
 " https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files
 set directory^=$HOME/.vim/tmp//
 
-set runtimepath+=/home/matt/.dein/repos/github.com/Shougo/dein.vim
+" Required:
+set runtimepath^=~/.vim/bundle/neobundle.vim/
 
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-" Add plugins here
-call dein#begin(expand('~/.vim/dein')) " plugins' root path
-
-call dein#add('https://github.com/ctrlpvim/ctrlp.vim')
-call dein#add('https://github.com/pangloss/vim-javascript')
-call dein#add('https://github.com/easymotion/vim-easymotion')
-call dein#add('https://github.com/mattn/emmet-vim')
-call dein#add('https://github.com/tomasr/molokai')
-call dein#add('https://github.com/scrooloose/nerdcommenter')
-call dein#add('https://github.com/scrooloose/nerdtree')
-call dein#add('https://github.com/tpope/vim-fugitive')
-call dein#add('https://github.com/Valloric/MatchTagAlways')
-call dein#add('https://github.com/derekwyatt/vim-scala')
-call dein#add('https://github.com/jiangmiao/auto-pairs')
-call dein#add('https://github.com/airblade/vim-gitgutter')
-call dein#add('nathanaelkane/vim-indent-guides')
-call dein#add('terryma/vim-multiple-cursors')
-call dein#add('mxw/vim-jsx')
-call dein#add('git@github.com:altercation/vim-colors-solarized.git')
-call dein#add('https://github.com/osyo-manga/vim-over')
-call dein#add('https://github.com/epilande/vim-react-snippets')
-call dein#add('https://github.com/JamshedVesuna/vim-markdown-preview')
-call dein#add('https://github.com/majutsushi/tagbar')
-call dein#add('https://github.com/tpope/vim-surround')
-call dein#add('tpope/vim-repeat')
-
-call dein#end()
-call dein#save_state()
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Statuslines
 set laststatus=2
@@ -57,6 +35,48 @@ function! FileSize()
         return (bytes / 1024) . "K"
     endif
 endfunction
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+
+" Install plugins here: 
+NeoBundle 'https://github.com/ctrlpvim/ctrlp.vim'
+NeoBundle 'https://github.com/pangloss/vim-javascript'
+NeoBundle 'https://github.com/easymotion/vim-easymotion'
+NeoBundle 'https://github.com/mattn/emmet-vim'
+NeoBundle 'https://github.com/tomasr/molokai'
+NeoBundle 'https://github.com/scrooloose/nerdcommenter'
+NeoBundle 'https://github.com/scrooloose/nerdtree'
+NeoBundle 'https://github.com/tpope/vim-fugitive'
+NeoBundle 'https://github.com/Valloric/MatchTagAlways'
+NeoBundle 'https://github.com/derekwyatt/vim-scala'
+NeoBundle 'https://github.com/jiangmiao/auto-pairs'
+NeoBundle 'https://github.com/airblade/vim-gitgutter'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'git@github.com:altercation/vim-colors-solarized.git'
+NeoBundle 'https://github.com/osyo-manga/vim-over'
+NeoBundle 'https://github.com/epilande/vim-react-snippets'
+NeoBundle 'https://github.com/JamshedVesuna/vim-markdown-preview'
+NeoBundle 'https://github.com/majutsushi/tagbar'
+NeoBundle 'https://github.com/tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
+
+" NeoBundle 'https://github.com/dougnukem/vim-swap-lines'
+" NeoBundle 'https://github.com/SirVer/ultisnips'
+" NeoBundle 'https://github.com/vim-syntastic/syntastic'
+
+" Best plugins:
+" You complete me
+" vim-latex
+" localvim
+
+" End install plugins
+call neobundle#end()
+
+NeoBundleCheck
 
 " Required:
 filetype plugin indent on
