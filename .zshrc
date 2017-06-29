@@ -7,6 +7,9 @@ export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -135,4 +138,12 @@ function mcd() {
 
 function define() {
     dict $1 | less
+}
+
+function emulator() {
+    AVD_NAME=Nexus_Marshmallow
+    pushd ${ANDROID_HOME}/tools
+    # ./emulator -avd ${AVD_NAME} $* &
+    ./emulator -avd ${AVD_NAME} &
+    popd
 }
