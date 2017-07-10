@@ -8,7 +8,6 @@ endif
 " Move swp files to separate folder
 " https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files
 set directory^=$HOME/.vim/tmp//
-
 set runtimepath+=$HOME/.dein/repos/github.com/Shougo/dein.vim
 
 
@@ -88,7 +87,8 @@ set cursorline
 :hi CursorLine   cterm=NONE ctermbg=DarkGray ctermfg=white
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:
+" set list listchars=tab:»·,trail:·,nbsp:
+set list listchars=tab:»·,trail:·
 set textwidth=120
 " set colorcolumn=+1
 
@@ -207,9 +207,7 @@ nnoremap <leader>p "+p<CR>
 
 "CtrlP Ignore settings
 " https://github.com/ctrlpvim/ctrlp.vim
-
-" Multi Cursors
-
+"
 " set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|.meteor'
 let g:ctrlp_show_hidden = 1
