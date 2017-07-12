@@ -10,35 +10,31 @@ endif
 set directory^=$HOME/.vim/tmp//
 set runtimepath+=$HOME/.dein/repos/github.com/Shougo/dein.vim
 
-
-" Add plugins here
-call dein#begin(expand('~/.vim/dein')) " plugins' root path
-
-call dein#add('https://github.com/ctrlpvim/ctrlp.vim')
-call dein#add('https://github.com/pangloss/vim-javascript')
-call dein#add('https://github.com/easymotion/vim-easymotion')
-call dein#add('https://github.com/mattn/emmet-vim')
-call dein#add('https://github.com/tomasr/molokai')
-call dein#add('https://github.com/scrooloose/nerdcommenter')
-call dein#add('https://github.com/scrooloose/nerdtree')
-call dein#add('https://github.com/tpope/vim-fugitive')
-call dein#add('https://github.com/Valloric/MatchTagAlways')
-call dein#add('https://github.com/derekwyatt/vim-scala')
-call dein#add('https://github.com/jiangmiao/auto-pairs')
-call dein#add('https://github.com/airblade/vim-gitgutter')
-call dein#add('nathanaelkane/vim-indent-guides')
-call dein#add('terryma/vim-multiple-cursors')
-call dein#add('mxw/vim-jsx')
-call dein#add('git@github.com:altercation/vim-colors-solarized.git')
-call dein#add('https://github.com/osyo-manga/vim-over')
-call dein#add('https://github.com/epilande/vim-react-snippets')
-call dein#add('https://github.com/JamshedVesuna/vim-markdown-preview')
-call dein#add('https://github.com/majutsushi/tagbar')
-call dein#add('https://github.com/tpope/vim-surround')
-call dein#add('tpope/vim-repeat')
-
-call dein#end()
-call dein#save_state()
+call plug#begin()
+    " Add plugins here
+    Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+    Plug 'https://github.com/pangloss/vim-javascript'
+    Plug 'https://github.com/easymotion/vim-easymotion'
+    Plug 'https://github.com/mattn/emmet-vim'
+    Plug 'https://github.com/tomasr/molokai'
+    Plug 'https://github.com/scrooloose/nerdcommenter'
+    Plug 'https://github.com/scrooloose/nerdtree'
+    Plug 'https://github.com/tpope/vim-fugitive'
+    Plug 'https://github.com/Valloric/MatchTagAlways'
+    Plug 'https://github.com/derekwyatt/vim-scala'
+    Plug 'https://github.com/jiangmiao/auto-pairs'
+    Plug 'https://github.com/airblade/vim-gitgutter'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'mxw/vim-jsx'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'https://github.com/osyo-manga/vim-over'
+    Plug 'https://github.com/epilande/vim-react-snippets'
+    Plug 'https://github.com/JamshedVesuna/vim-markdown-preview'
+    Plug 'https://github.com/majutsushi/tagbar'
+    Plug 'https://github.com/tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+call plug#end()
 
 " Statuslines
 set laststatus=2

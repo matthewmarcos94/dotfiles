@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export TERM=xterm-256color
+[ -n "$TMUX"  ] && export TERM=screen-256color
+
 # Path to your oh-my-zsh installation.
 # export ZSH="/home/matt/.oh-my-zsh"
 export ZSH=$HOME/.oh-my-zsh
@@ -56,8 +59,8 @@ ENABLE_CORRECTION="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # TMUX config things. Please refer to https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
-# ZSH_TMUX_FIXTERM_WITH_256COLOR="true"
-# ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_FIXTERM_WITH_256COLOR="true"
+ZSH_TMUX_AUTOSTART="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
