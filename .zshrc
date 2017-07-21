@@ -9,8 +9,9 @@ export TERM=xterm-256color
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export ANDROID_HOME=$HOME/Android/Sdk
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+export PATH="$HOME/.tmux:$PATH"
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -150,3 +151,7 @@ function emulator() {
     ./emulator -avd ${AVD_NAME} &
     popd
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
