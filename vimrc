@@ -37,9 +37,16 @@ call plug#begin()
 call plug#end()
 
 " Statuslines
+" set laststatus=2
+" set statusline=%f
+" set statusline+=(%{FileSize()})
 set laststatus=2
-set statusline=%f
+:set statusline=%f         " Path to the file
 set statusline+=(%{FileSize()})
+:set statusline+=%=        " Switch to the right side
+:set statusline+=%l        " Current line
+:set statusline+=/         " Separator
+:set statusline+=%L        " Total lines
 
 function! FileSize()
     let bytes = getfsize(expand("%:p"))

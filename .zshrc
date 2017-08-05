@@ -12,6 +12,7 @@ eval "$(rbenv init -)"
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.tmux:$PATH"
+# export PATH="$HOME/.VueScan:$PATH"
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -67,7 +68,7 @@ ZSH_TMUX_AUTOSTART="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract tmux tmuxinator safe-paste zsh-256color zsh-nvm node npm web-search copydir copyfile cp colorize command-not-found history fasd debian battery quote vi-mode)
+plugins=(git extract safe-paste zsh-256color zsh-nvm node npm web-search copydir copyfile cp colorize command-not-found history fasd debian battery quote vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,7 +114,7 @@ alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias dropbox="cd /home/matt/Dropbox"
 alias off="sudo shutdown -h now"
 alias acads="cd /home/matt/Documents/Acads"
-alias powerup="sudo apt -y update ; sudo apt -y upgrade"
+alias powerup="sudo apt update ; sudo apt upgrade"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CFA'
