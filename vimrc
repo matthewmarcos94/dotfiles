@@ -10,9 +10,10 @@ endif
 set directory^=$HOME/.vim/tmp//
 set runtimepath+=$HOME/.dein/repos/github.com/Shougo/dein.vim
 
+
 call plug#begin()
     " Add plugins here
-    Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+    " Plug 'https://github.com/ctrlpvim/ctrlp.vim'
     Plug 'https://github.com/pangloss/vim-javascript'
     Plug 'https://github.com/easymotion/vim-easymotion'
     Plug 'https://github.com/mattn/emmet-vim'
@@ -34,19 +35,27 @@ call plug#begin()
     Plug 'https://github.com/majutsushi/tagbar'
     Plug 'https://github.com/tpope/vim-surround'
     Plug 'tpope/vim-repeat'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'https://github.com/lumiliet/vim-twig'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+    Plug 'junegunn/fzf.vim'
+    Plug 'JamshedVesuna/vim-markdown-preview'
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'aaronj1335/underscore-templates.vim'
 call plug#end()
-
 " Statuslines
 " set laststatus=2
 " set statusline=%f
 " set statusline+=(%{FileSize()})
 set laststatus=2
-:set statusline=%f         " Path to the file
+set statusline=%{fugitive#statusline()}
+:set statusline+=%f         " Path to the file
 set statusline+=(%{FileSize()})
 :set statusline+=%=        " Switch to the right side
-:set statusline+=%l        " Current line
+:set statusline+=L:%l,C:%v        " Current line
 :set statusline+=/         " Separator
-:set statusline+=%L        " Total lines
+:set statusline+=L:%L        " Total lines
 
 function! FileSize()
     let bytes = getfsize(expand("%:p"))
@@ -131,10 +140,6 @@ autocmd VimEnter * IndentGuidesToggle
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
 
-" Markdown Preview change hotkey from Control P to something else because I have controlP plugin which I love
-let vim_markdown_preview_hotkey='<C-\>'
-
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 let g:user_emmet_leader_key='<C-e>'     " If expanding an emmet abbreviation, hit <C-e> followed by a ,
@@ -186,31 +191,24 @@ nnoremap <leader>wq :wq<CR>
 nnoremap <leader>wqa :wqa<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
-vnoremap <leader>y "+y<CR>
+vnoremap <leader>y "+yy<CR>
 nnoremap <leader>p "+p<CR>
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-" Move lines up and down: http://vim.wikia.com/wiki/Moving_lines_up_or_down
-" nnoremap <A-k> :m -2<CR>==
-" nnoremap <A-j> :m .+1<CR>==
-" inoremap <S-j> <Esc>:m .+1<CR>==gi
-" inoremap <S-k> <Esc>:m .-2<CR>==gi
-" vnoremap <S-k> :m '<-2<CR>gv=gv
-" vnoremap <S-j> :m '>+1<CR>gv=gv
-
-" nnoremap <C-K> :m -2<CR>==
-" nnoremap <C-J> :m +1<CR>==
-" inoremap <C-K> :m -2<CR>==
-" inoremap <C-J> :m +1<CR>==
-" vnoremap <C-K> :m -2<CR>==
-" vnoremap <C-J> :m +1<CR>==
-
-"Something for remapping the swap
-" nnoremap <silent> <C-K> :call <SID>swap_up()<CR>
-" nnoremap <silent> <C-J> :call <SID>swap_down()<CR>
 
 "CtrlP Ignore settings
+
 " https://github.com/ctrlpvim/ctrlp.vim
-"
 " set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|.meteor'
-let g:ctrlp_show_hidden = 1
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|.meteor'
+" let g:ctrlp_show_hidden = 1
+" let g:ctrlp_user_command = 'find %s -type f'
+
+"FZF remap
+nnoremap <C-p> :Files<CR>
+nnoremap <C-f> :Ag<CR>
+
+"Vim Markdown Preview
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_github=1

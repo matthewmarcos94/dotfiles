@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export TERM=xterm-256color
 [ -n "$TMUX"  ] && export TERM=screen-256color
@@ -12,7 +12,8 @@ eval "$(rbenv init -)"
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.tmux:$PATH"
-# export PATH="$HOME/.VueScan:$PATH"
+export PATH=$HOME/miniconda2/bin:$PATH
+
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -32,7 +33,7 @@ ZSH_THEME="cobalt2"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -45,7 +46,7 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -55,7 +56,7 @@ ENABLE_CORRECTION="true"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -68,7 +69,7 @@ ZSH_TMUX_AUTOSTART="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract safe-paste zsh-256color zsh-nvm node npm web-search copydir copyfile cp colorize command-not-found history fasd debian battery quote vi-mode)
+plugins=(git extract safe-paste zsh-256color zsh-nvm node npm web-search copydir copyfile cp colorize command-not-found history battery quote vi-mode battery)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,7 +120,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CFA'
 alias c='clear'
-alias tp='sudo touchpad'
 alias tmux="tmux -2"
 alias SP="cd /home/matt/Dropbox/Academics/SP"
 alias setclip='xclip -selection c'
@@ -129,13 +129,8 @@ alias download='aria2c -x 16 -s 16 -k 1M'
 alias v='vim'
 alias start_mongo='sudo service mongod start'
 alias cleartex="rm *.aux *.pdf *.bbl *.blg *.dvi *.log"
-
-# Here are some custom functions
-function makepdf() {
-    rm *.aux *.pdf *.bbl *.blg *.dvi *.log
-    # latex $1 && bibtex $1 && latex $1 && pdflatex $1 && evince $1".pdf" &
-    pdflatex $1 && bibtex $1 && pdflatex $1 && pdflatex $1 && pdflatex $1 && evince $1".pdf" &
-}
+alias sa="source activate"
+alias sd="source deactivate"
 
 function mcd() {
     mkdir $1 && cd $1
@@ -153,6 +148,20 @@ function emulator() {
     popd
 }
 
+function touchpad() {
+    synclient TouchpadOff=$1
+}
+
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# add this configuration to ~/.zshrc
+export HISTFILE=~/.zsh_history  # ensure history file visibility
+export HH_CONFIG=hicolor        # get more colors
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
