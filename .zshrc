@@ -16,6 +16,7 @@ export PATH=$HOME/miniconda2/bin:$PATH
 
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export HISTTIMEFORMAT="%d/%m/%y %T"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
