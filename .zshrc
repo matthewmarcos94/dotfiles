@@ -115,6 +115,7 @@ alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias dropbox="cd /home/matt/Dropbox"
 alias off="sudo shutdown -h now"
+alias suspend="systemctl suspend"
 alias acads="cd /home/matt/Documents/Acads"
 alias powerup="sudo apt update ; sudo apt upgrade"
 alias ll='ls -alF'
@@ -166,3 +167,6 @@ export HH_CONFIG=hicolor        # get more colors
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# added by Miniconda2 installer
+export PATH="/home/matt/miniconda2/bin:$PATH"
