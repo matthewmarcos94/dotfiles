@@ -8,8 +8,6 @@ endif
 " Move swp files to separate folder
 " https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files
 set directory^=$HOME/.vim/tmp//
-" set runtimepath+=$HOME/.dein/repos/github.com/Shougo/dein.vim
-
 
 call plug#begin()
     " Add plugins here
