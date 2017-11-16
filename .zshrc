@@ -6,21 +6,24 @@ export TERM=xterm-256color
 
 # Path to your oh-my-zsh installation.
 # export ZSH="/home/matt/.oh-my-zsh"
+export ANDROID_HOME=$HOME/Android/Sdk
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export ANDROID_HOME=$HOME/Android/Sdk
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.tmux:$PATH"
 export PATH=$HOME/miniconda2/bin:$PATH
-
+export PATH="/home/matt/bin/jdk1.8.0_152/bin:$PATH"
+export PATH="/home/matt/miniconda2/bin:$PATH"
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 export HISTTIMEFORMAT="%d/%m/%y %T"
+eval "$(rbenv init -)"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cobalt2"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="cobalt2"
 # ZSH_THEME="miloshadzic"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -166,5 +169,3 @@ export HH_CONFIG=hicolor        # get more colors
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# added by Miniconda2 installer
-export PATH="/home/matt/miniconda2/bin:$PATH"

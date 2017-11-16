@@ -41,6 +41,7 @@ call plug#begin()
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
     Plug 'aaronj1335/underscore-templates.vim'
+    Plug 'Valloric/YouCompleteMe' " => Do not have python support
 call plug#end()
 " Statuslines
 " set laststatus=2
@@ -210,3 +211,5 @@ nnoremap <C-f> :Ag<CR>
 "Vim Markdown Preview
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_github=1
+set backspace=2
+" set backspace=indent,eol,start
