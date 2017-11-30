@@ -29,7 +29,7 @@ call plug#begin()
     Plug 'altercation/vim-colors-solarized'
     Plug 'https://github.com/osyo-manga/vim-over'
     Plug 'https://github.com/epilande/vim-react-snippets'
-    Plug 'https://github.com/JamshedVesuna/vim-markdown-preview'
+    Plug 'JamshedVesuna/vim-markdown-preview'
     Plug 'https://github.com/majutsushi/tagbar'
     Plug 'https://github.com/tpope/vim-surround'
     Plug 'tpope/vim-repeat'
@@ -41,12 +41,13 @@ call plug#begin()
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
     Plug 'aaronj1335/underscore-templates.vim'
-    Plug 'Valloric/YouCompleteMe' " => Do not have python support
+    Plug 'https://github.com/AndrewRadev/splitjoin.vim'
+    Plug 'godlygeek/tabular'
+    Plug 'Valloric/YouCompleteMe'
+    Plug 'justinmk/vim-sneak'
+    Plug 'wellle/targets.vim '
 call plug#end()
 " Statuslines
-" set laststatus=2
-" set statusline=%f
-" set statusline+=(%{FileSize()})
 set laststatus=2
 set statusline=%{fugitive#statusline()}
 :set statusline+=%f         " Path to the file
@@ -120,10 +121,26 @@ let g:ctrlp_cmd='CtrlP :pwd'
 
 " Required for Markdown Preview https://github.com/JamshedVesuna/vim-markdown-preview
 let vim_markdown_preview_github=1
+" "------------------------------------------------------------------------------
+" " NERDCommenter
+" "------------------------------------------------------------------------------
+"
+"" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
-" Nerd Commenter
+" Allow commenting and inverting empty lines (useful when commenting a region)
+" let g:NERDCommentEmptyLines = 1
+"
+" " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+"
+"" Disables display of the 'Bookmarks' label and 'Press ? for help' text.
+let g:NERDTreeMinimalUI = 1
 
+" Closes the tree window after opening a file
+" let g:NERDTreeQuitOnOpen = 1
+" "
+" "
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -135,6 +152,10 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=233
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=234
 autocmd VimEnter * IndentGuidesToggle
+
+" SplitJoin
+nmap <Leader>j :SplitjoinJoin<cr>
+nmap <Leader>k :SplitjoinSplit<cr>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
@@ -159,6 +180,10 @@ nnoremap <Down> :echoe "Use j"<CR>
 " NerdTree Shortcut
 nnoremap <C-b> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -190,19 +215,10 @@ nnoremap <leader>wq :wq<CR>
 nnoremap <leader>wqa :wqa<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
-vnoremap <leader>y "+yy<CR>
-nnoremap <leader>p "+p<CR>
+vnoremap <leader>y "*yy<CR>
+nnoremap <leader>p "*p<CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-
-
-"CtrlP Ignore settings
-
-" https://github.com/ctrlpvim/ctrlp.vim
-" set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|.meteor'
-" let g:ctrlp_show_hidden = 1
-" let g:ctrlp_user_command = 'find %s -type f'
 
 "FZF remap
 nnoremap <C-p> :Files<CR>

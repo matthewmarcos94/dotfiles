@@ -22,9 +22,22 @@ eval "$(rbenv init -)"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# https://github.com/bhilburn/powerlevel9k
+POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
-# ZSH_THEME="cobalt2"
-# ZSH_THEME="miloshadzic"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv anaconda dir vcs newline time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs battery)
+POWERLEVEL9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_ANACONDA_BACKGROUND='248'
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='184'
+POWERLEVEL9K_ANACONDA_FOREGROUND='232'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -101,13 +114,6 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-
-# Here are some aliases
 alias battery="sudo tlp-stat"
 alias work="cd ~/Documents/Code"
 alias ytd="youtube-dl -c"
@@ -120,7 +126,7 @@ alias dropbox="cd /home/matt/Dropbox"
 alias off="sudo shutdown -h now"
 alias suspend="systemctl suspend -i"
 alias powerup="sudo apt update ; sudo apt upgrade"
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CFA'
 alias c='clear'
@@ -134,6 +140,8 @@ alias start_mongo='sudo service mongod start'
 alias cleartex="rm *.aux *.pdf *.bbl *.blg *.dvi *.log"
 alias sa="source activate"
 alias sd="source deactivate"
+alias conda-ls="conda info --envs"
+alias tap="synclient TapButton1=1 TapButton2=3 TapButton3=2"
 
 function mcd() {
     mkdir $1 && cd $1
