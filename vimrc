@@ -1,17 +1,26 @@
-"thanaelkane/vim-indent-guides Note: Skip initialization for vim-tiny or vim-small.
-if 0 | endif
+" vimrc by Joseph Matthew Marcos
+" Created at December 01, 2017
 
-if &compatible
-    set nocompatible               " Be iMproved
-endif
+" Begin here ------------------------------------------------------------------
+set encoding=utf-8         "set encoding
+set fileencoding=utf-8     "set file encoding
+filetype indent plugin on  "load filetype plugins/indent settings
 
-" Move swp files to separate folder
-" https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files
+" General ---------------------------------------------------------------------
+let mapleader = "\<Space>"
 set directory^=$HOME/.vim/tmp//
+syntax on
+filetype plugin on
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 " smarttab
+set autoindent          " Who does not like autoindent?
+set foldenable          " enable line folding
+set showmatch           " highlight matching [{()}]
+set shiftround          " >> and << will bring to the next multiuple of tabstop"
+set showcmd
+set number "Line numbers
+set numberwidth=6
 
 call plug#begin()
-    " Add plugins here
-    " Plug 'https://github.com/ctrlpvim/ctrlp.vim'
     Plug 'https://github.com/pangloss/vim-javascript'
     Plug 'https://github.com/easymotion/vim-easymotion'
     Plug 'https://github.com/mattn/emmet-vim'
@@ -45,17 +54,18 @@ call plug#begin()
     Plug 'godlygeek/tabular'
     Plug 'Valloric/YouCompleteMe'
     Plug 'justinmk/vim-sneak'
-    Plug 'wellle/targets.vim '
+    Plug 'wellle/targets.vim'
 call plug#end()
-" Statuslines
+
+" Statuslines -----------------------------------------------------------------
 set laststatus=2
 set statusline=%{fugitive#statusline()}
-:set statusline+=%f         " Path to the file
+set statusline+=%f         " Path to the file
 set statusline+=(%{FileSize()})
-:set statusline+=%=        " Switch to the right side
-:set statusline+=L:%l,C:%v        " Current line
-:set statusline+=/         " Separator
-:set statusline+=L:%L        " Total lines
+set statusline+=%=        " Switch to the right side
+set statusline+=L:%l,C:%v        " Current line
+set statusline+=/         " Separator
+set statusline+=L:%L        " Total lines
 
 function! FileSize()
     let bytes = getfsize(expand("%:p"))
@@ -69,40 +79,10 @@ function! FileSize()
     endif
 endfunction
 
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-
-" Remap leader key to space
-let mapleader = "\<Space>"
-
-syntax on
-filetype plugin on
-
-set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
-set shiftround          " >> and << will bring to the next multiuple of tabstop"
-
-set showcmd
-set number "Line numbers
-set numberwidth=5
-
+" Aesthetics ------------------------------------------------------------------
 color molokai
-
-set autoindent          " Who does not like autoindent?
-set foldenable          " enable line folding
-
-set showmatch           " highlight matching [{()}]
-
-set cursorline
-:hi CursorLine   cterm=NONE ctermbg=DarkGray ctermfg=white
-
-" Display extra whitespace
-" set list listchars=tab:»·,trail:·,nbsp:
 set list listchars=tab:»·,trail:·
 set textwidth=120
-" set colorcolumn=+1
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -117,7 +97,6 @@ map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
 
 " CtrlP Vim
 let g:ctrlp_cmd='CtrlP :pwd'
-
 
 " Required for Markdown Preview https://github.com/JamshedVesuna/vim-markdown-preview
 let vim_markdown_preview_github=1
@@ -146,16 +125,14 @@ let g:NERDSpaceDelims = 1
 
 " https://github.com/nathanaelkane/vim-indent-guides For vim imdents
 set sw=4 "noet
-" let g:indent_guides_start_level=4
-" let g:indent_guides_guide_size=1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=233
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=234
 autocmd VimEnter * IndentGuidesToggle
 
 " SplitJoin
-nmap <Leader>j :SplitjoinJoin<cr>
-nmap <Leader>k :SplitjoinSplit<cr>
+nnoremap <Leader>j :SplitjoinJoin<cr>
+nnoremap <Leader>k :SplitjoinSplit<cr>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
@@ -164,18 +141,8 @@ nnoremap <Leader>r :RunInInteractiveShell<space>
 let g:html_indent_tags = 'li\|p'
 let g:user_emmet_leader_key='<C-e>'     " If expanding an emmet abbreviation, hit <C-e> followed by a ,
 
-" This is mapping for the snippets I use: https://github.com/SirVer/ultisnips
-let g:UltiSnipsExpandTrigger='<C-Tab>'
-
 " Quick-escape to normal mode
-imap jj <esc>
-
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+inoremap jj <esc>
 
 " NerdTree Shortcut
 nnoremap <C-b> :NERDTreeToggle<CR>
@@ -191,22 +158,13 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-"Automatically load vimrc on close
-nnoremap <leader>rv :source $MYVIMRC<CR>
-
 " multiple tabs
 noremap tn :tabnew<CR>
 noremap tj :tabnext<CR>
 noremap tk :tabprev<CR>
-noremap tf :tabfirst<CR>
-noremap tl :tablast<CR>
-
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
 
 " leader key remaps
+nnoremap <leader>rj :source $MYVIMRC<CR>
 nnoremap <leader>vs :tabnew $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
@@ -214,18 +172,16 @@ nnoremap <leader>q! :q!<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>wqa :wqa<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
-vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>y "*yy<CR>
 nnoremap <leader>p "*p<CR>
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 "FZF remap
 nnoremap <C-p> :Files<CR>
+
+"Silver Surfer
 nnoremap <C-f> :Ag<CR>
 
 "Vim Markdown Preview
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_github=1
 set backspace=2
-" set backspace=indent,eol,start

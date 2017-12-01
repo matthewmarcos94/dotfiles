@@ -16,6 +16,7 @@ export PATH="/home/matt/bin/jdk1.8.0_152/bin:$PATH"
 export PATH="/home/matt/miniconda2/bin:$PATH"
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:/usr/local/go/bin
 
 export HISTTIMEFORMAT="%d/%m/%y %T"
 eval "$(rbenv init -)"
