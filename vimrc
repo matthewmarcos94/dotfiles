@@ -8,20 +8,30 @@ filetype indent plugin on  "load filetype plugins/indent settings
 
 " General ---------------------------------------------------------------------
 let mapleader = "\<Space>"
-set directory^=$HOME/.vim/tmp//
 syntax on
-filetype plugin on
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set autoindent          " Who does not like autoindent?
 set foldenable          " enable line folding
 set showmatch           " highlight matching [{()}]
 set shiftround          " >> and << will bring to the next multiuple of tabstop"
 set showcmd
-set number "Line numbers
+set number
 set numberwidth=6
 set autoread
-set backspace=2
+set hidden                           "enables hidden buffers
+set history=100                      "make history remember 100 :-commands and searches
+set backspace=indent,eol,start "use more common bs behavior"
 
+" Plugin init -----------------------------------------------------------------
+" download vim-plug if not exists
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    augroup vimplug
+        autocmd!
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    augroup END
+endif
 " Plugins ---------------------------------------------------------------------
 call plug#begin()
     Plug 'https://github.com/pangloss/vim-javascript'
@@ -60,27 +70,12 @@ call plug#begin()
     Plug 'wellle/targets.vim'
 call plug#end()
 
-" Statuslines -----------------------------------------------------------------
-set laststatus=2
-set statusline=%{fugitive#statusline()}
-set statusline+=%f         " Path to the file
-set statusline+=(%{FileSize()})
-set statusline+=%=        " Switch to the right side
-set statusline+=L:%l,C:%v        " Current line
-set statusline+=/         " Separator
-set statusline+=L:%L        " Total lines
-
-function! FileSize()
-    let bytes = getfsize(expand("%:p"))
-    if bytes <= 0
-        return ""
-    endif
-    if bytes < 1024
-        return bytes
-    else
-        return (bytes / 1024) . "K"
-    endif
-endfunction
+" Statusline -----------------------------------------------------------------
+set laststatus=2           "always show the status line
+set modeline               "enables file specific settings
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y%=[%p%%][%04l,%04v]
+" filepath | modified flag | read only flag | help flag | preview flag |
+" number of lines | current ft | current syntax | % into file | line, column"
 
 " Aesthetics ------------------------------------------------------------------
 color molokai
@@ -89,6 +84,16 @@ set textwidth=120
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=233
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=234
+
+" Backups
+set undofile                      " keep undofiles
+set backup                        " enable backups
+set swapfile                      " do I even need those?
+
+set directory^=$HOME/.vim/tmp/swap/
+set undodir^=$HOME/.vim/tmp/undo//     " undo   files directory
+set backupdir^=$HOME/.vim/tmp/backup// " backup files directory
+set viewdir^=$HOME/.tmp/vim/view//     " view   files directory
 
 " Splits ----------------------------------------------------------------------
 set splitbelow
@@ -107,7 +112,6 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDSpaceDelims = 1
 let NERDTreeShowHidden=1
 
-set sw=4 "noet
 autocmd VimEnter * IndentGuidesToggle
 
 " SplitJoin
@@ -116,11 +120,13 @@ nnoremap <Leader>k :SplitjoinSplit<cr>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-let g:user_emmet_leader_key='<C-e>'     " If expanding an emmet abbreviation, hit <C-e> followed by a ,
+" If expanding an emmet abbreviation, hit <C-e> followed by a ,
+let g:user_emmet_leader_key='<C-e>'
 
 " Quick-escape to normal mode
 inoremap jj <esc>
 
+" Better indention
 vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
@@ -137,6 +143,7 @@ noremap tj :tabnext<CR>
 noremap tk :tabprev<CR>
 
 " leader key remaps
+nnoremap <leader>e :edit $MYVIMRC<CR>
 nnoremap <leader>r :source $MYVIMRC<CR>
 nnoremap <Leader>rs :RunInInteractiveShell<space>
 nnoremap <leader>vs :tabnew $MYVIMRC<CR>
@@ -146,8 +153,11 @@ nnoremap <leader>q! :q!<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>wqa :wqa<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>y "*yy<CR>
 nnoremap <leader>p "*p<CR>
+" double leader = toggle fold
+map <leader><leader> za
 
 "FZF remap
 nnoremap <C-p> :Files<CR>
@@ -158,3 +168,6 @@ nnoremap <C-f> :Ag<CR>
 "Vim Markdown Preview
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_github=1
+
+" Misc Settings ---------------------------------------------------------------
+set wildignore=*.dll,*.o,*.bak,*.pyc,*.jpg,*.gif,*.png
