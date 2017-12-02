@@ -15,13 +15,15 @@ nnoremap -O O<ESC>0Dj<ESC>
 " Line movement
 nnoremap - ddp
 nnoremap _ ddkP
-nnoremap L $h
+nnoremap L $
 nnoremap H ^
 vnoremap L $h
 vnoremap H ^
 
 " Quick-escape to normal mode
-inoremap jj <esc>
+" inoremap jj <esc> -> start forgetting this
+inoremap jk <esc>
+inoremap <esc> <nop>
 
 " Better indention
 vnoremap < <gv

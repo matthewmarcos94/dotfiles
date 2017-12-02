@@ -1,3 +1,4 @@
+# Matthew Marcos's Dotfiles
 ## Installation
 
 * clone repo to `~/dotfiles` folder:
@@ -14,3 +15,5 @@ ln -s dotfiles/vimrc vimrc
 ln -s dotfiles/.zshrc .zshrc
 ln -s dotfiles/tmux.conf .tmux.conf
 ```
+
+Alternatively, you can `./instsall.sh`

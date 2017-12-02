@@ -5,10 +5,10 @@
 set encoding=utf-8         "set encoding
 set fileencoding=utf-8     "set file encoding
 filetype indent plugin on  "load filetype plugins/indent settings
+syntax on
+let mapleader = "\<Space>"
 
 " General ---------------------------------------------------------------------
-let mapleader = "\<Space>"
-syntax on
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set autoindent          " Who does not like autoindent?
 set foldenable          " enable line folding
@@ -115,8 +115,8 @@ autocmd VimEnter * IndentGuidesToggle
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-" If expanding an emmet abbreviation, hit <C-e> followed by a ,
-let vim_markdown_preview_github=1
+let vim_markdown_preview_github=1  " Github markdown
+let vim_markdown_preview_browser='Firefox Quantum'  " Use Firefox as the default browser
 
 " Misc Settings ---------------------------------------------------------------
 set wildignore=*.dll,*.o,*.bak,*.pyc,*.jpg,*.gif,*.png
