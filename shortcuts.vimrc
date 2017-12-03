@@ -1,8 +1,12 @@
+let mapleader = "\<Space>"
 let g:user_emmet_leader_key='<C-e>'
 
 " SplitJoin
 nnoremap <Leader>j :SplitjoinJoin<cr>
 nnoremap <Leader>k :SplitjoinSplit<cr>
+
+" Reindent everything - Pls set with depending on filetype
+nnoremap <Leader>i ggVG=<ESC>
 
 "Clear the line
 nnoremap -d 0D

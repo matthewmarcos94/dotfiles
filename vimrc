@@ -6,7 +6,6 @@ set encoding=utf-8         "set encoding
 set fileencoding=utf-8     "set file encoding
 filetype indent plugin on  "load filetype plugins/indent settings
 syntax on
-let mapleader = "\<Space>"
 
 " General ---------------------------------------------------------------------
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
@@ -16,7 +15,7 @@ set showmatch           " highlight matching [{()}]
 set shiftround          " >> and << will bring to the next multiuple of tabstop"
 set showcmd
 set number
-set numberwidth=6
+set numberwidth=5
 set autoread
 set hidden                           "enables hidden buffers
 set history=100                      "make history remember 100 :-commands and searches
@@ -69,7 +68,7 @@ call plug#begin()
     Plug 'wellle/targets.vim'
 call plug#end()
 
-" Statusline -----------------------------------------------------------------
+" Statusline ------------------------------------------------------------------
 set laststatus=2           "always show the status line
 set modeline               "enables file specific settings
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y%=[%p%%][%04l,%04v]
@@ -81,6 +80,9 @@ color molokai
 set list listchars=tab:»·,trail:·
 set textwidth=120
 let g:indent_guides_auto_colors = 0
+let &colorcolumn=join(range(80,999),",")
+" let &colorcolumn=join(range(120,999),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=233
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=234
 
