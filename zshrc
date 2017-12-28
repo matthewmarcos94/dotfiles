@@ -5,18 +5,19 @@ export TERM=xterm-256color
 [ -n "$TMUX"  ] && export TERM=screen-256color
 
 # Path to your oh-my-zsh installation.
-# export ZSH="/home/matt/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 export ANDROID_HOME=$HOME/Android/Sdk
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.tmux:$PATH"
 export PATH=$HOME/miniconda2/bin:$PATH
-export PATH="/home/matt/bin/jdk1.8.0_152/bin:$PATH"
-export PATH="/home/matt/miniconda2/bin:$PATH"
+export PATH="$HOME/bin/jdk1.8.0_152/bin:$PATH"
+export PATH="$HOME/miniconda2/bin:$PATH"
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 export HISTTIMEFORMAT="%d/%m/%y %T"
 eval "$(rbenv init -)"
@@ -51,7 +52,7 @@ POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=1
+export UPDATE_ZSH_DAYS=30
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -123,7 +124,7 @@ alias wget="wget -c"
 alias vs="code"
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
-alias dropbox="cd /home/matt/Dropbox"
+alias dropbox="cd $HOME/Dropbox"
 alias off="sudo shutdown -h now"
 alias suspend="systemctl suspend -i"
 alias powerup="sudo apt update ; sudo apt upgrade"
@@ -143,6 +144,7 @@ alias sa="source activate"
 alias sd="source deactivate"
 alias conda-ls="conda info --envs"
 alias tap="synclient TapButton1=1 TapButton2=3 TapButton3=2"
+alias start="nautilus"
 
 function mcd() {
     mkdir $1 && cd $1

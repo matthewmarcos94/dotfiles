@@ -91,10 +91,10 @@ set undofile                      " keep undofiles
 set backup                        " enable backups
 set swapfile                      " do I even need those?
 
-set directory^=$HOME/.vim/tmp/swap/
-set undodir^=$HOME/.vim/tmp/undo//     " undo   files directory
-set backupdir^=$HOME/.vim/tmp/backup// " backup files directory
-set viewdir^=$HOME/.tmp/vim/view//     " view   files directory
+set directory=$HOME/.vim/tmp/swap/
+set undodir=$HOME/.vim/tmp/undo/     " undo   files directory
+set backupdir=$HOME/.vim/tmp/backup/ " backup files directory
+set viewdir=$HOME/.tmp/vim/view/     " view   files directory
 
 " Splits ----------------------------------------------------------------------
 set splitbelow
@@ -122,6 +122,20 @@ let vim_markdown_preview_browser='Firefox Quantum'  " Use Firefox as the default
 
 " Misc Settings ---------------------------------------------------------------
 set wildignore=*.dll,*.o,*.bak,*.pyc,*.jpg,*.gif,*.png
+
+
+"These are to cancel the default behavior of d, D, c, C
+""  to put the text they delete in the default register.
+"  Note that this means e.g. "ad won't copy the text into
+"  "  register a anymore.  You have to explicitly yank it.
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+vnoremap D "_D
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
 
 " Additional sources
 source ~/dotfiles/abbrev.vimrc
