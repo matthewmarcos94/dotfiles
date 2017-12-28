@@ -54,7 +54,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>q! :q!<CR>
 nnoremap <leader>wq :wq<CR>
-nnoremap <leader>wqa :wqa<CR>
+" nnoremap <leader>wqa :wqa<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>y "*yy<CR>

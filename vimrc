@@ -10,7 +10,6 @@ syntax on
 " General ---------------------------------------------------------------------
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set autoindent          " Who does not like autoindent?
-set foldenable          " enable line folding
 set showmatch           " highlight matching [{()}]
 set shiftround          " >> and << will bring to the next multiuple of tabstop"
 set showcmd
@@ -20,6 +19,11 @@ set autoread
 set hidden                           "enables hidden buffers
 set history=100                      "make history remember 100 :-commands and searches
 set backspace=indent,eol,start "use more common bs behavior"
+
+" Fold settings
+set foldenable
+set foldmethod=indent
+set foldlevel=99
 
 " Plugin init -----------------------------------------------------------------
 " download vim-plug if not exists
@@ -66,6 +70,7 @@ call plug#begin()
     Plug 'Valloric/YouCompleteMe'
     Plug 'justinmk/vim-sneak'
     Plug 'wellle/targets.vim'
+    Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 call plug#end()
 
 " Statusline ------------------------------------------------------------------
@@ -136,6 +141,9 @@ nnoremap c "_c
 vnoremap c "_c
 nnoremap C "_C
 vnoremap C "_C
+
+" Make YCM go away after completing
+let g:ycm_autoclose_preview_window_after_completion=1
 
 " Additional sources
 source ~/dotfiles/abbrev.vimrc
