@@ -57,8 +57,11 @@ nnoremap <leader>wq :wq<CR>
 " nnoremap <leader>wqa :wqa<CR>
 nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
-vnoremap <leader>y "*yy<CR>
-nnoremap <leader>p "*p<CR>
+" vnoremap <leader>y "*yy<CR>
+" vnoremap <leader>p "*p<CR>
+vnoremap <leader>y :w ! xclip -i -sel c<CR><CR>
+nnoremap <leader>y <S-V>:w ! xclip -i -sel c<CR><CR>
+vnoremap <leader>p :r ! xclip -o -sel -c<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " double leader = toggle fold
@@ -72,3 +75,16 @@ nnoremap <C-f> :Ag<CR>
 
 "Vim Markdown Preview
 let vim_markdown_preview_hotkey='<C-m>'
+
+"These are to cancel the default behavior of d, D, c, C
+"  to put the text they delete in the default register.
+"  Note that this means e.g. "ad won't copy the text into
+"  register a anymore.  You have to explicitly yank it.
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+vnoremap D "_D
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
