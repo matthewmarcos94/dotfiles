@@ -71,6 +71,8 @@ call plug#begin()
     Plug 'justinmk/vim-sneak'
     Plug 'wellle/targets.vim'
     Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+    Plug 'python-mode/python-mode'
+    Plug 'Vimjas/vim-python-pep8-indent'
     " Plug 'vim-airline/vim-airline'
     " Plug 'vim-airline/vim-airline-themes'
 call plug#end()
