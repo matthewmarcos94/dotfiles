@@ -73,8 +73,6 @@ call plug#begin()
     Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
     Plug 'python-mode/python-mode'
     Plug 'Vimjas/vim-python-pep8-indent'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Statusline ------------------------------------------------------------------
