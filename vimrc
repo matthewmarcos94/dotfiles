@@ -69,10 +69,13 @@ call plug#begin()
     Plug 'godlygeek/tabular'
     Plug 'Valloric/YouCompleteMe'
     Plug 'justinmk/vim-sneak'
-    Plug 'wellle/targets.vim'
+    " Plug 'wellle/targets.vim'
+    Plug 'rking/ag.vim'
     Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
     Plug 'python-mode/python-mode'
     Plug 'Vimjas/vim-python-pep8-indent'
+    Plug 'vim-python/python-syntax'
+    Plug 'noah/vim256-color'
 call plug#end()
 
 " Statusline ------------------------------------------------------------------
@@ -133,6 +136,10 @@ set wildignore=*.dll,*.o,*.bak,*.pyc,*.jpg,*.gif,*.png,*.pyo
 " Make YCM go away after completing
 let g:ycm_autoclose_preview_window_after_completion=1
 set clipboard=unnamedplus
+
+" Python highlighting
+let g:python_highlight_all = 1
+let g:python_version_2 = 1
 
 " Additional sources
 source ~/dotfiles/abbrev.vimrc

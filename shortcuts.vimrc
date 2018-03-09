@@ -52,6 +52,7 @@ nnoremap <Leader>rs :RunInInteractiveShell<space>
 nnoremap <leader>vs :tabnew $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap :Q :q<CR>
 nnoremap <leader>q! :q!<CR>
 nnoremap <leader>wq :wq<CR>
 " nnoremap <leader>wqa :wqa<CR>

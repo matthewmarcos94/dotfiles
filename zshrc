@@ -145,7 +145,7 @@ alias sd="source deactivate"
 alias conda-ls="conda info --envs"
 alias tap="synclient TapButton1=1 TapButton2=3 TapButton3=2"
 alias start="nautilus"
-alias socks="ssh -D 8001 -f -C -q -N -p 2222 ubuntu@ec2-13-211-28-224.ap-southeast-2.compute.amazonaws.com"
+alias fcd="cd \`find . -type d | fzf\`"
 
 function mcd() {
     mkdir $1 && cd $1
