@@ -17,6 +17,8 @@ nnoremap -o o<ESC>0Dk
 nnoremap -O O<ESC>0Dj<ESC>
 
 " Line movement
+nnoremap > >>
+nnoremap < <<
 nnoremap - ddp
 nnoremap _ ddkP
 nnoremap L $
@@ -63,6 +65,7 @@ vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>y :w ! xclip -i -sel c<CR><CR>
 nnoremap <leader>y <S-V>:w ! xclip -i -sel c<CR><CR>
 vnoremap <leader>p :r ! xclip -o -sel -c<CR>
+nnoremap <leader>p :r ! xclip -o -sel -c<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " double leader = toggle fold

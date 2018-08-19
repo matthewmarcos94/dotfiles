@@ -8,16 +8,16 @@ export TERM=xterm-256color
 # export ZSH="$HOME/.oh-my-zsh"
 export ANDROID_HOME=$HOME/Android/Sdk
 export ZSH=$HOME/.oh-my-zsh
-export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.tmux:$PATH"
 export PATH=$HOME/miniconda2/bin:$PATH
-export PATH="$HOME/bin/jdk1.8.0_152/bin:$PATH"
+export PATH="$HOME/bin/jdk1.8.0_172/bin:$PATH"
 export PATH="$HOME/miniconda2/bin:$PATH"
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 export HISTTIMEFORMAT="%d/%m/%y %T"
 eval "$(rbenv init -)"
@@ -25,17 +25,19 @@ eval "$(rbenv init -)"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # https://github.com/bhilburn/powerlevel9k
-POWERLEVEL9K_MODE='nerdfont-complete'
+# POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_MODE='awesome-fontconfig'
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv anaconda dir vcs newline time)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs battery)
-POWERLEVEL9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv anaconda dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs battery time)
+POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_ANACONDA_BACKGROUND='248'
-POWERLEVEL9K_VIRTUALENV_BACKGROUND='184'
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='248'
 POWERLEVEL9K_ANACONDA_FOREGROUND='232'
+POWERLEVEL9K_VIRTUALENV_FOREGROUND='232'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
@@ -146,6 +148,7 @@ alias conda-ls="conda info --envs"
 alias tap="synclient TapButton1=1 TapButton2=3 TapButton3=2"
 alias start="nautilus"
 alias fcd="cd \`find . -type d | fzf\`"
+alias Code="cd /home/matt/Code"
 
 function mcd() {
     mkdir $1 && cd $1
@@ -181,3 +184,4 @@ export HH_CONFIG=hicolor        # get more colors
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval "$(rbenv init -)"

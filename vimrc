@@ -76,6 +76,7 @@ call plug#begin()
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'vim-python/python-syntax'
     Plug 'noah/vim256-color'
+    Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 " Statusline ------------------------------------------------------------------
