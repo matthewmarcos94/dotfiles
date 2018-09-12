@@ -21,16 +21,14 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 export HISTTIMEFORMAT="%d/%m/%y %T"
 eval "$(rbenv init -)"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# https://github.com/bhilburn/powerlevel9k
-POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv anaconda dir vcs newline time)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs battery)
-POWERLEVEL9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( virtualenv anaconda dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time root_indicator background_jobs battery)
+POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_ANACONDA_BACKGROUND='248'
