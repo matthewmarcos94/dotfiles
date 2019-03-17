@@ -19,12 +19,9 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
-
-export SPOTIFY_CLIENT_ID='dd24798040bb451c9450c04e09ebc1d0'
-export SPOTIFY_SECRET=`cat /home/jmarcos/helpers/SPOTIFY_SECRET`
+export PATH="$HOME/miniconda2/bin:$PATH"
 
 export HISTTIMEFORMAT="%d/%m/%y %T"
-eval "$(rbenv init -)"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -90,7 +87,7 @@ ZSH_TMUX_AUTOSTART="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract safe-paste zsh-256color zsh-nvm node npm copydir copyfile cp colorize command-not-found history battery quote vi-mode battery)
+plugins=(git extract safe-paste zsh-256color zsh-nvm node npm copydir copyfile cp colorize command-not-found history battery quote vi-mode battery docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -190,3 +187,12 @@ export HH_CONFIG=hicolor        # get more colors
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jmarcos/.sdkman"
 [[ -s "/home/jmarcos/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jmarcos/.sdkman/bin/sdkman-init.sh"
+
+# Docker compose autocomplete
+fpath=(~/.zsh/completion $fpath)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/mattt/.local/share/Trash/files/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mattt/.local/share/Trash/files/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/mattt/.local/share/Trash/files/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mattt/.local/share/Trash/files/google-cloud-sdk/completion.zsh.inc'; fi
