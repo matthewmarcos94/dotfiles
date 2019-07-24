@@ -87,7 +87,7 @@ ZSH_TMUX_AUTOSTART="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract safe-paste zsh-256color zsh-nvm node npm copydir copyfile cp colorize command-not-found history battery quote vi-mode battery docker)
+plugins=(git extract safe-paste zsh-256color zsh-nvm node npm copydir copyfile cp colorize command-not-found history battery vi-mode battery docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,16 +117,10 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 alias battery="sudo tlp-stat"
 alias work="cd ~/Code"
-alias ytd="youtube-dl -c"
-alias ytdp="youtube-dl -c -o '%(playlist_index)s. %(title)s.%(ext)s'"
 alias wget="wget -c"
 alias vs="code"
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
-alias dropbox="cd $HOME/Dropbox"
-alias off="sudo shutdown -h now"
-alias suspend="systemctl suspend -i"
-alias powerup="sudo apt update ; sudo apt upgrade"
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CFA'
@@ -135,18 +129,10 @@ alias tmux="tmux -2"
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias getpwd='pwd | setclip'
-alias download='aria2c -x 16 -s 16 -k 1M'
 alias v='vim'
-alias start_mongo='sudo service mongod start'
-alias cleartex="rm *.aux *.pdf *.bbl *.blg *.dvi *.log"
 alias sa="source activate"
 alias sd="source deactivate"
-alias conda-ls="conda info --envs"
-alias tap="synclient TapButton1=1 TapButton2=3 TapButton3=2"
-alias start="nautilus"
-alias fcd="cd \`find . -type d | fzf\`"
-alias lxrs="lxpanelctl restart && openbox --restart"
-alias lxsettings="sudo vim  ~/.config/openbox/lubuntu-rc.xml && lxrs"
+
 # unalias sp
 
 function mcd() {
@@ -155,18 +141,6 @@ function mcd() {
 
 function define() {
     dict $1 | less
-}
-
-function emulator() {
-    AVD_NAME=Nexus_Marshmallow
-    pushd ${ANDROID_HOME}/tools
-    # ./emulator -avd ${AVD_NAME} $* &
-    ./emulator -avd ${AVD_NAME} &
-    popd
-}
-
-function touchpad() {
-    synclient TouchpadOff=$1
 }
 
 bindkey -v
@@ -184,15 +158,5 @@ export HH_CONFIG=hicolor        # get more colors
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/jmarcos/.sdkman"
-[[ -s "/home/jmarcos/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jmarcos/.sdkman/bin/sdkman-init.sh"
-
 # Docker compose autocomplete
 fpath=(~/.zsh/completion $fpath)
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/mattt/.local/share/Trash/files/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mattt/.local/share/Trash/files/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/mattt/.local/share/Trash/files/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mattt/.local/share/Trash/files/google-cloud-sdk/completion.zsh.inc'; fi
