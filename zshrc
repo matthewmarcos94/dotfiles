@@ -4,7 +4,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export TERM=xterm-256color
 [ -n "$TMUX"  ] && export TERM=screen-256color
 
-export GOPATH="$GOPATH:$HOME/go/"
+export GOPATH="$HOME/go/"  # This is supposed to be the default and is not required
 
 # Path to your oh-my-zsh installation.
 # export ZSH="$HOME/.oh-my-zsh"
@@ -20,14 +20,15 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
 export PATH="$HOME/miniconda2/bin:$PATH"
+export PATH="$(yarn global bin):$PATH"
 
 export HISTTIMEFORMAT="%d/%m/%y %T"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( virtualenv anaconda dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time root_indicator background_jobs battery)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time root_indicator background_jobs)
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_DELIMITER=""
@@ -39,18 +40,8 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
 POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
+POWERLEVEL9K_MODE='awesome-patched'
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=30
 
 # Uncomment the following line to disable colors in ls.
@@ -87,7 +78,28 @@ ZSH_TMUX_AUTOSTART="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract safe-paste zsh-256color zsh-nvm node npm copydir copyfile cp colorize command-not-found history battery vi-mode battery docker)
+plugins=(
+    battery
+    brew
+    copydir
+    copyfile
+    colorize
+    command-not-found
+    cp
+    docker
+    extract
+    git
+    history
+    node
+    npm
+    safe-paste
+    vi-mode
+    zsh-256color
+    osx
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-nvm
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,23 +111,12 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-alias battery="sudo tlp-stat"
 alias work="cd ~/Code"
 alias wget="wget -c"
 alias vs="code"
@@ -126,21 +127,19 @@ alias la='ls -A'
 alias l='ls -CFA'
 alias c='clear'
 alias tmux="tmux -2"
-alias setclip='xclip -selection c'
-alias getclip='xclip -selection clipboard -o'
+alias setclip='pbcopy'
+alias getclip='pbpaste'
 alias getpwd='pwd | setclip'
 alias v='vim'
 alias sa="source activate"
-alias sd="source deactivate"
-
-# unalias sp
+alias sd="conda deactivate"
+alias nopasswd="eval $(ssh-agent)"
+alias dup="docker-compose up -d"
+alias ddown="docker-compose down"
+alias drs="docker-compose restart"
 
 function mcd() {
     mkdir $1 && cd $1
-}
-
-function define() {
-    dict $1 | less
 }
 
 bindkey -v
@@ -154,9 +153,9 @@ export NVM_DIR="$HOME/.nvm"
 export HISTFILE=~/.zsh_history  # ensure history file visibility
 export HH_CONFIG=hicolor        # get more colors
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export LC_ALL=en_US.UTF-8
 
 # Docker compose autocomplete
 fpath=(~/.zsh/completion $fpath)
