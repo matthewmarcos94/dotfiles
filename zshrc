@@ -138,6 +138,11 @@ alias dup="docker-compose up -d"
 alias ddown="docker-compose down"
 alias drs="docker-compose restart"
 
+
+function checkcommands() {
+    fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;  }' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10
+}
+
 function mcd() {
     mkdir $1 && cd $1
 }

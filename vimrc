@@ -131,7 +131,7 @@ let vim_markdown_preview_github=1  " Github markdown
 let vim_markdown_preview_browser='Firefox Quantum'  " Use Firefox as the default browser
 
 " Misc Settings ---------------------------------------------------------------
-set wildignore=*.dll,*.o,*.bak,*.pyc,*.jpg,*.gif,*.png,*.pyo
+set wildignore=*.dll,*.o,*.bak,*.pyc,*.jpg,*.gif,*.png,*.pyo,.DS_Store
 
 " Make YCM go away after completing
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -144,4 +144,13 @@ let g:python_version_2 = 1
 " Additional sources
 source ~/dotfiles/abbrev.vimrc
 source ~/dotfiles/shortcuts.vimrc
+
+" share clipboard with the system
+if has("clipboard")
+    set clipboard=unnamed " copy to the system clipboard
+
+    if has("unnamedplus") " X11 support
+        set clipboard+=unnamedplus
+    endif
+endif
 
