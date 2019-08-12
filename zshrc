@@ -74,11 +74,20 @@ HIST_STAMPS="mm/dd/yyyy"
 ZSH_TMUX_FIXTERM_WITH_256COLOR="true"
 ZSH_TMUX_AUTOSTART="true"
 
+# Auto Notify settings
+# Set threshold to 20seconds
+export AUTO_NOTIFY_THRESHOLD=20
+export AUTO_NOTIFY_TITLE="Hey! \`%command\` has just finished"
+export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
+export AUTO_NOTIFY_IGNORE=("docker" "python" "docker-compose" "man" "sleep"
+"htop" "yarn" "node" "npm" "yarn")
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    auto-notify
     battery
     brew
     copydir
@@ -87,9 +96,11 @@ plugins=(
     command-not-found
     cp
     docker
+    docker-aliases
     extract
     git
     history
+    kube-aliases
     node
     npm
     safe-paste
@@ -99,6 +110,7 @@ plugins=(
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-nvm
+    you-should-use
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -133,11 +145,15 @@ alias getpwd='pwd | setclip'
 alias v='vim'
 alias sa="source activate"
 alias sd="conda deactivate"
+alias conda-ls="conda info --envs"
 alias nopasswd="eval $(ssh-agent)"
 alias dup="docker-compose up -d"
 alias ddown="docker-compose down"
 alias drs="docker-compose restart"
 
+function cr() {
+    docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
+}
 
 function checkcommands() {
     fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;  }' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10
@@ -163,4 +179,13 @@ export HH_CONFIG=hicolor        # get more colors
 export LC_ALL=en_US.UTF-8
 
 # Docker compose autocomplete
-fpath=(~/.zsh/completion $fpath)
+##############################################################################
+# History Configuration
+##############################################################################
+HISTSIZE=5000               #How many lines of history to keep in memory
+HISTFILE=~/.zsh_history     #Where to save history to disk
+SAVEHIST=5000               #Number of history entries to save to disk
+#HISTDUP=erase               #Erase duplicates in the history file
+setopt    appendhistory     #Append history to the history file (no overwriting)
+setopt    sharehistory      #Share history across terminals
+setopt    incappendhistory  #Immediately append to the history file, not just when a term is killedpath=(~/.zsh/completion $fpath)
