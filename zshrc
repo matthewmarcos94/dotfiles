@@ -73,15 +73,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # TMUX config things. Please refer to https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
 ZSH_TMUX_FIXTERM_WITH_256COLOR="true"
 ZSH_TMUX_AUTOSTART="true"
-
-# Auto Notify settings
-# Set threshold to 20seconds
-export AUTO_NOTIFY_THRESHOLD=20
-export AUTO_NOTIFY_TITLE="Hey! \`%command\` has just finished"
-export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
-export AUTO_NOTIFY_IGNORE=("docker" "python" "docker-compose" "man" "sleep"
-"htop" "yarn" "node" "npm" "yarn")
-
+source $ZSH/oh-my-zsh.sh
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -113,7 +105,12 @@ plugins=(
     you-should-use
 )
 
-source $ZSH/oh-my-zsh.sh
+# Auto Notify settings
+# Set threshold to 20seconds
+export AUTO_NOTIFY_THRESHOLD=20
+export AUTO_NOTIFY_TITLE="Hey! \`%command\` has just finished"
+export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
+AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn")
 
 # User configuration
 
@@ -126,7 +123,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='vim'
 fi
 
 alias work="cd ~/Code"
@@ -150,6 +147,7 @@ alias nopasswd="eval $(ssh-agent)"
 alias dup="docker-compose up -d"
 alias ddown="docker-compose down"
 alias drs="docker-compose restart"
+alias gbrd="git branch | grep -v "master" | xargs git branch -D"
 
 function cr() {
     docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
