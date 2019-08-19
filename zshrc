@@ -7,7 +7,7 @@ export TERM=xterm-256color
 export GOPATH="$HOME/go/"  # This is supposed to be the default and is not required
 
 # Path to your oh-my-zsh installation.
-# export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export ANDROID_HOME=$HOME/Android/Sdk
 export ZSH=$HOME/.oh-my-zsh
 
