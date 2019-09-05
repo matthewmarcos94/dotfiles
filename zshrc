@@ -9,7 +9,6 @@ export GOPATH="$HOME/go/"  # This is supposed to be the default and is not requi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export ANDROID_HOME=$HOME/Android/Sdk
-export ZSH=$HOME/.oh-my-zsh
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
@@ -21,7 +20,8 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
 export PATH="$HOME/miniconda2/bin:$PATH"
 export PATH="$(yarn global bin):$PATH"
-
+export PATH="$HOME/helpers/bin:$PATH"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
 export HISTTIMEFORMAT="%d/%m/%y %T"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -73,7 +73,6 @@ HIST_STAMPS="mm/dd/yyyy"
 # TMUX config things. Please refer to https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
 ZSH_TMUX_FIXTERM_WITH_256COLOR="true"
 ZSH_TMUX_AUTOSTART="true"
-source $ZSH/oh-my-zsh.sh
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -148,6 +147,10 @@ alias dup="docker-compose up -d"
 alias ddown="docker-compose down"
 alias drs="docker-compose restart"
 alias gbrd="git branch | grep -v "master" | xargs git branch -D"
+alias laraws='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose exec workspace bash '
+alias laradown='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose down --remove-orphans && cd -'
+alias laraup='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose up -d nginx mysql workspace'
+alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
 
 function cr() {
     docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
@@ -187,3 +190,6 @@ SAVEHIST=5000               #Number of history entries to save to disk
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killedpath=(~/.zsh/completion $fpath)
+setopt completealiases
+
+source $ZSH/oh-my-zsh.sh
