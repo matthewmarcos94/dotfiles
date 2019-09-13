@@ -151,6 +151,8 @@ alias laraws='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compo
 alias laradown='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose down --remove-orphans && cd -'
 alias laraup='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose up -d nginx mysql workspace'
 alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
+alias savessh='ssh-add ~/.ssh/id_rsa'
+alias ts="echo /Users/matthewmarcos/Code/TomorrowSuper/build"
 
 function cr() {
     docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
@@ -162,6 +164,16 @@ function checkcommands() {
 
 function mcd() {
     mkdir $1 && cd $1
+}
+
+function pipelines() {
+    # $1 should be the container name
+    docker run -it \
+        --volume=`pwd`:/opt/atlassian/pipelines/agent/build \
+        --workdir="/opt/atlassian/pipelines/agent/build" \
+        --memory=2048m \
+        $1\
+        /bin/bash
 }
 
 bindkey -v
