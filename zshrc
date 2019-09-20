@@ -109,7 +109,7 @@ plugins=(
 export AUTO_NOTIFY_THRESHOLD=20
 export AUTO_NOTIFY_TITLE="Hey! \`%command\` has just finished"
 export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
-AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn")
+AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn" "tmux")
 
 # User configuration
 
@@ -153,6 +153,7 @@ alias laraup='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compo
 alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
 alias savessh='ssh-add ~/.ssh/id_rsa'
 alias ts="echo /Users/matthewmarcos/Code/TomorrowSuper/build"
+alias serve="/Users/matthewmarcos/miniconda2/envs/py37/bin/python -m http.server"
 
 function cr() {
     docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
@@ -172,6 +173,14 @@ function pipelines() {
         --volume=`pwd`:/opt/atlassian/pipelines/agent/build \
         --workdir="/opt/atlassian/pipelines/agent/build" \
         --memory=2048m \
+        --env BITBUCKET_CLONE_DIR='/opt/atlassian/pipelines/agent/build' \
+        --env DB_HOST='db_host' \
+        --env DB_PORT='5432' \
+        --env DB_NAME='db_name' \
+        --env DB_USER='db_user' \
+        --env DB_PASSWORD='password' \
+        --env WEB_TOKEN_SECRET='token_secret' \
+        --env SENDGRID_API_KEY='api_key here' \
         $1\
         /bin/bash
 }
@@ -205,3 +214,9 @@ setopt    incappendhistory  #Immediately append to the history file, not just wh
 setopt completealiases
 
 source $ZSH/oh-my-zsh.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/matthewmarcos/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matthewmarcos/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc'; fi
