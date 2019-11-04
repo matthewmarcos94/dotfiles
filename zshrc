@@ -89,6 +89,7 @@ plugins=(
     docker
     docker-aliases
     extract
+    fzf-zsh
     git
     history
     kube-aliases
@@ -154,6 +155,8 @@ alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
 alias savessh='ssh-add ~/.ssh/id_rsa'
 alias ts="echo /Users/matthewmarcos/Code/TomorrowSuper/build"
 alias serve="/Users/matthewmarcos/miniconda2/envs/py37/bin/python -m http.server"
+alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
+alias rmquarantine="xattr -d com.apple.quarantine"
 
 function cr() {
     docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
@@ -169,18 +172,13 @@ function mcd() {
 
 function pipelines() {
     # $1 should be the container name
+    # $2 must ben the env file
     docker run -it \
         --volume=`pwd`:/opt/atlassian/pipelines/agent/build \
         --workdir="/opt/atlassian/pipelines/agent/build" \
         --memory=2048m \
         --env BITBUCKET_CLONE_DIR='/opt/atlassian/pipelines/agent/build' \
-        --env DB_HOST='db_host' \
-        --env DB_PORT='5432' \
-        --env DB_NAME='db_name' \
-        --env DB_USER='db_user' \
-        --env DB_PASSWORD='password' \
-        --env WEB_TOKEN_SECRET='token_secret' \
-        --env SENDGRID_API_KEY='api_key here' \
+        --env-file /Users/matthewmarcos/helpers/env/$2.env \
         $1\
         /bin/bash
 }
