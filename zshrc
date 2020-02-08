@@ -16,19 +16,22 @@ export PATH="$HOME/.tmux:$PATH"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/snap/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
 export PATH="$HOME/miniconda2/bin:$PATH"
-export PATH="$(yarn global bin):$PATH"
 export PATH="$HOME/helpers/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 export HISTTIMEFORMAT="%d/%m/%y %T"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( virtualenv anaconda dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time root_indicator background_jobs)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time root_indicator background_jobs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_TIME_BACKGROUND=green
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_DELIMITER=""
@@ -80,29 +83,20 @@ ZSH_TMUX_AUTOSTART="true"
 plugins=(
     auto-notify
     battery
-    brew
     copydir
     copyfile
     colorize
     command-not-found
     cp
     docker
-    docker-aliases
     extract
-    fzf-zsh
     git
     history
-    kube-aliases
     node
     npm
     safe-paste
     vi-mode
     zsh-256color
-    osx
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    zsh-nvm
-    you-should-use
 )
 
 # Auto Notify settings
@@ -136,8 +130,8 @@ alias la='ls -A'
 alias l='ls -CFA'
 alias c='clear'
 alias tmux="tmux -2"
-alias setclip='pbcopy'
-alias getclip='pbpaste'
+alias setclip='xclip -selection clipboard'
+alias getclip='xclip -selection clipboard -o'
 alias getpwd='pwd | setclip'
 alias v='vim'
 alias sa="source activate"
@@ -148,15 +142,11 @@ alias dup="docker-compose up -d"
 alias ddown="docker-compose down"
 alias drs="docker-compose restart"
 alias gbrd="git branch | grep -v "master" | xargs git branch -D"
-alias laraws='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose exec workspace bash '
-alias laradown='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose down --remove-orphans && cd -'
-alias laraup='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose up -d nginx mysql workspace'
 alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
 alias savessh='ssh-add ~/.ssh/id_rsa'
 alias ts="echo /Users/matthewmarcos/Code/TomorrowSuper/build"
 alias serve="/Users/matthewmarcos/miniconda2/envs/py37/bin/python -m http.server"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
-alias rmquarantine="xattr -d com.apple.quarantine"
 
 function cr() {
     docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
@@ -194,8 +184,6 @@ export NVM_DIR="$HOME/.nvm"
 export HISTFILE=~/.zsh_history  # ensure history file visibility
 export HH_CONFIG=hicolor        # get more colors
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export LC_ALL=en_US.UTF-8
 
 # Docker compose autocomplete
@@ -218,3 +206,4 @@ if [ -f '/Users/matthewmarcos/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/m
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc'; fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
