@@ -22,6 +22,7 @@ export PATH="$HOME/miniconda2/bin:$PATH"
 export PATH="$(yarn global bin):$PATH"
 export PATH="$HOME/helpers/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:/Users/matthewmarcos/.dotnet/tools"
 export HISTTIMEFORMAT="%d/%m/%y %T"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -157,6 +158,14 @@ alias ts="echo /Users/matthewmarcos/Code/TomorrowSuper/build"
 alias serve="/Users/matthewmarcos/miniconda2/envs/py37/bin/python -m http.server"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
 alias rmquarantine="xattr -d com.apple.quarantine"
+alias portblocker="lsof -i"
+alias dus="dotnet user-secrets"
+alias dwr="dotnet watch run"
+alias defdr="dotnet ef database drop"
+alias defdu="dotnet ef database update"
+alias def="dotnet ef"
+alias helpers="cd ~/helpers"
+alias db="cd ~/helpers/database-containers && dup"
 
 function cr() {
     docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
@@ -176,6 +185,7 @@ function pipelines() {
     docker run -it \
         --volume=`pwd`:/opt/atlassian/pipelines/agent/build \
         --workdir="/opt/atlassian/pipelines/agent/build" \
+        --env TEST="TESTING WORKS!" \
         --memory=2048m \
         --env BITBUCKET_CLONE_DIR='/opt/atlassian/pipelines/agent/build' \
         --env-file /Users/matthewmarcos/helpers/env/$2.env \
@@ -193,8 +203,6 @@ export NVM_DIR="$HOME/.nvm"
 # add this configuration to ~/.zshrc
 export HISTFILE=~/.zsh_history  # ensure history file visibility
 export HH_CONFIG=hicolor        # get more colors
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export LC_ALL=en_US.UTF-8
 
@@ -218,3 +226,5 @@ if [ -f '/Users/matthewmarcos/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/m
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
