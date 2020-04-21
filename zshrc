@@ -132,6 +132,7 @@ alias remote="cd ~/remote"
 alias wget="wget -c"
 alias vs="code"
 alias vimrc="vim ~/.vimrc"
+alias vimsrc="vim ~/shortcuts.vimrc"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias ll='ls -alFh'
 alias la='ls -A'

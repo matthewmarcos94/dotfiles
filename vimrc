@@ -142,7 +142,6 @@ let g:python_highlight_all = 1
 let g:python_version_2 = 1
 
 " Additional sources
-source ~/dotfiles/abbrev.vimrc
 source ~/dotfiles/shortcuts.vimrc
 
 " share clipboard with the system
