@@ -16,4 +16,4 @@ ln -s dotfiles/zshrc .zshrc
 ln -s dotfiles/tmux.conf .tmux.conf
 ```
 
-Alternatively, you can `./instsall.sh`
+Alternatively, you can `./install.sh`

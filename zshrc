@@ -82,28 +82,25 @@ plugins=(
     auto-notify
     battery
     brew
-    copydir
-    copyfile
     colorize
     command-not-found
+    copyfile
     cp
-    # docker
-    # docker-aliases
+    direnv
     extract
     fzf-zsh
     git
     history
-    # kube-aliases
     node
     npm
     safe-paste
     vi-mode
-    zsh-256color
     osx
-    zsh-syntax-highlighting
+    zsh-256color
     zsh-autosuggestions
-    zsh-nvm
     you-should-use
+    zsh-syntax-highlighting
+    zsh-nvm
 )
 
 # Auto Notify settings
@@ -111,6 +108,7 @@ plugins=(
 export AUTO_NOTIFY_THRESHOLD=20
 export AUTO_NOTIFY_TITLE="Hey! \`%command\` has just finished"
 export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
+ZSH_COLORIZE_TOOL=chroma
 AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn" "tmux" "vim")
 
 # User configuration
