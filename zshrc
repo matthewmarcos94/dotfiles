@@ -87,13 +87,13 @@ plugins=(
     colorize
     command-not-found
     cp
-    docker
-    docker-aliases
+    # docker
+    # docker-aliases
     extract
     fzf-zsh
     git
     history
-    kube-aliases
+    # kube-aliases
     node
     npm
     safe-paste
@@ -111,7 +111,7 @@ plugins=(
 export AUTO_NOTIFY_THRESHOLD=20
 export AUTO_NOTIFY_TITLE="Hey! \`%command\` has just finished"
 export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
-AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn" "tmux")
+AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn" "tmux" "vim")
 
 # User configuration
 
@@ -128,6 +128,7 @@ else
 fi
 
 alias work="cd ~/Code"
+alias remote="cd ~/remote"
 alias wget="wget -c"
 alias vs="code"
 alias vimrc="vim ~/.vimrc"
@@ -154,11 +155,11 @@ alias laradown='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-com
 alias laraup='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose up -d nginx mysql workspace'
 alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
 alias savessh='ssh-add ~/.ssh/id_rsa'
-alias ts="echo /Users/matthewmarcos/Code/TomorrowSuper/build"
 alias serve="/Users/matthewmarcos/miniconda2/envs/py37/bin/python -m http.server"
+alias ytd="youtube-dl"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
 alias rmquarantine="xattr -d com.apple.quarantine"
-alias portblocker="lsof -i"
+alias portblocker="lsof -i"  # portblocker <portNumber>
 alias dus="dotnet user-secrets"
 alias dwr="dotnet watch run"
 alias defdr="dotnet ef database drop"
