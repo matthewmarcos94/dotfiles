@@ -87,11 +87,11 @@ plugins=(
     copyfile
     cp
     direnv
+    dotenv
     extract
     fzf-zsh
     git
     history
-    node
     npm
     safe-paste
     vi-mode
