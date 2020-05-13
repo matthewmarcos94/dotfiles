@@ -13,16 +13,18 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.tmux:$PATH"
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:/Users/matthewmarcos/.dotnet/tools"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
-export PATH="$HOME/miniconda2/bin:$PATH"
+export PATH="$PATH:$HOME/miniconda2/bin"
 export PATH="$(yarn global bin):$PATH"
-export PATH="$HOME/helpers/bin:$PATH"
+export PATH="$PATH:$HOME/helpers/bin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:/Users/matthewmarcos/.dotnet/tools"
+export PATH="$PATH:$HOME/helpers/spark-2.4.5-bin-hadoop2.7/bin"
+
+export SPARK_MASTER="spark://localhost:7077"
 export HISTTIMEFORMAT="%d/%m/%y %T"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -93,9 +95,10 @@ plugins=(
     git
     history
     npm
+    osx
+    rsync
     safe-paste
     vi-mode
-    osx
     zsh-256color
     zsh-autosuggestions
     you-should-use
@@ -217,7 +220,7 @@ SAVEHIST=5000               #Number of history entries to save to disk
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killedpath=(~/.zsh/completion $fpath)
-setopt completealiases
+setopt    completealiases
 
 source $ZSH/oh-my-zsh.sh
 
