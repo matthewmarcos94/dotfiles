@@ -19,7 +19,7 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/snap/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
-export PATH="$HOME/miniconda2/bin:$PATH"
+export PATH="$HOME/miniconda3/bin:$PATH"
 export PATH="$HOME/helpers/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
@@ -83,20 +83,22 @@ ZSH_TMUX_AUTOSTART="true"
 plugins=(
     auto-notify
     battery
-    copydir
-    copyfile
     colorize
     command-not-found
+    copyfile
     cp
-    docker
+    direnv
+    dotenv
     extract
     git
     history
-    node
     npm
     safe-paste
     vi-mode
     zsh-256color
+    zsh-autosuggestions
+    you-should-use
+    zsh-syntax-highlighting
 )
 
 # Auto Notify settings
@@ -120,9 +122,12 @@ else
   export EDITOR='vim'
 fi
 
-alias work="cd ~/Code"
+alias work="cd $HOME/Code"
+alias notebook="cd $HOME/Code/notebooks"
+alias helpers="cd $HOME/helpers"
+alias powerup="sudo apt update -y ; sudo apt upgrade -y"
 alias wget="wget -c"
-alias vs="code"
+alias vs="codium"
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias ll='ls -alFh'
@@ -147,6 +152,7 @@ alias savessh='ssh-add ~/.ssh/id_rsa'
 alias ts="echo /Users/matthewmarcos/Code/TomorrowSuper/build"
 alias serve="/Users/matthewmarcos/miniconda2/envs/py37/bin/python -m http.server"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
+alias sshconf="vim $HOME/.ssh/config"
 
 function cr() {
     docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
@@ -160,15 +166,15 @@ function mcd() {
     mkdir $1 && cd $1
 }
 
-function pipelines() {
+function containerize() {
     # $1 should be the container name
     # $2 must ben the env file
+    # --env-file /Users/matthewmarcos/helpers/env/$2.env \
     docker run -it \
         --volume=`pwd`:/opt/atlassian/pipelines/agent/build \
         --workdir="/opt/atlassian/pipelines/agent/build" \
         --memory=2048m \
         --env BITBUCKET_CLONE_DIR='/opt/atlassian/pipelines/agent/build' \
-        --env-file /Users/matthewmarcos/helpers/env/$2.env \
         $1\
         /bin/bash
 }

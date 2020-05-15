@@ -45,7 +45,6 @@ call plug#begin()
     Plug 'https://github.com/scrooloose/nerdtree'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/Valloric/MatchTagAlways'
-    Plug 'https://github.com/derekwyatt/vim-scala'
     Plug 'https://github.com/jiangmiao/auto-pairs'
     Plug 'https://github.com/airblade/vim-gitgutter'
     Plug 'nathanaelkane/vim-indent-guides'
