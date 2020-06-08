@@ -18,11 +18,7 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
-export PATH="$PATH:$HOME/miniconda2/bin"
-export PATH="$(yarn global bin):$PATH"
 export PATH="$PATH:$HOME/helpers/bin"
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:$HOME/helpers/spark-2.4.5-bin-hadoop2.7/bin"
 
 export SPARK_MASTER="spark://localhost:7077"
 export HISTTIMEFORMAT="%d/%m/%y %T"
@@ -52,7 +48,6 @@ export UPDATE_ZSH_DAYS=30
 
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
-
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -91,7 +86,6 @@ plugins=(
     direnv
     dotenv
     extract
-    fzf-zsh
     git
     history
     npm
@@ -123,18 +117,19 @@ AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "hto
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+    export EDITOR='vim'
 else
-  export EDITOR='vim'
+    export EDITOR='vim'
 fi
 
-alias work="cd ~/Code"
-alias remote="cd ~/remote"
+alias work="cd $HOME/Code"
+alias remote="cd $HOME/remote"
 alias wget="wget -c"
 alias vs="code"
-alias vimrc="vim ~/.vimrc"
-alias vimsrc="vim ~/shortcuts.vimrc"
-alias zshrc="vim ~/.zshrc && source ~/.zshrc"
+alias vimrc="vim $HOME/.vimrc"
+alias vimsrc="vim $HOME/shortcuts.vimrc"
+alias zshrc="vim $HOME/.zshrc && source $HOME/.zshrc"
+alias zshsrc="source $HOME/.zshrc"
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CFA'
@@ -144,7 +139,7 @@ alias setclip='pbcopy'
 alias getclip='pbpaste'
 alias getpwd='pwd | setclip'
 alias v='vim'
-alias sa="source activate"
+alias sa="conda activate"
 alias sd="conda deactivate"
 alias conda-ls="conda info --envs"
 alias nopasswd="eval $(ssh-agent)"
@@ -152,27 +147,14 @@ alias dup="docker-compose up -d"
 alias ddown="docker-compose down"
 alias drs="docker-compose restart"
 alias gbrd="git branch | grep -v "master" | xargs git branch -D"
-alias laraws='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose exec workspace bash '
-alias laradown='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose down --remove-orphans && cd -'
-alias laraup='cd /Users/matthewmarcos/Code/php-projects/laradock && docker-compose up -d nginx mysql workspace'
 alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
 alias savessh='ssh-add ~/.ssh/id_rsa'
-alias serve="/Users/matthewmarcos/miniconda2/envs/py37/bin/python -m http.server"
 alias ytd="youtube-dl"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
-alias rmquarantine="xattr -d com.apple.quarantine"
+# alias rmquarantine="xattr -d com.apple.quarantine"
 alias portblocker="lsof -i"  # portblocker <portNumber>
-alias dus="dotnet user-secrets"
-alias dwr="dotnet watch run"
-alias defdr="dotnet ef database drop"
-alias defdu="dotnet ef database update"
-alias def="dotnet ef"
 alias helpers="cd ~/helpers"
 alias db="cd ~/helpers/database-containers && dup"
-
-function cr() {
-    docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
-}
 
 function checkcommands() {
     fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;  }' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10
@@ -203,13 +185,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# add this configuration to ~/.zshrc
-export HISTFILE=~/.zsh_history  # ensure history file visibility
 export HH_CONFIG=hicolor        # get more colors
 
 export LC_ALL=en_US.UTF-8
 
-# Docker compose autocomplete
 ##############################################################################
 # History Configuration
 ##############################################################################
@@ -222,12 +201,24 @@ setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killedpath=(~/.zsh/completion $fpath)
 setopt    completealiases
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 source $ZSH/oh-my-zsh.sh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/matthewmarcos/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matthewmarcos/google-cloud-sdk/path.zsh.inc'; fi
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/matthew/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/matthew/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/matthew/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/matthew/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc'; fi
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/Users/matthew/opt/miniconda3/bin:$PATH"
