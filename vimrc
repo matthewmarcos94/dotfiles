@@ -67,10 +67,10 @@ call plug#begin()
     Plug 'aaronj1335/underscore-templates.vim'
     Plug 'https://github.com/AndrewRadev/splitjoin.vim'
     Plug 'godlygeek/tabular'
-    Plug 'Valloric/YouCompleteMe'
+    " Plug 'Valloric/YouCompleteMe'
     Plug 'justinmk/vim-sneak'
     " Plug 'wellle/targets.vim'
-    Plug 'rking/ag.vim'
+    " Plug 'rking/ag.vim'
     Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
     Plug 'python-mode/python-mode'
     Plug 'Vimjas/vim-python-pep8-indent'
@@ -152,4 +152,3 @@ if has("clipboard")
         set clipboard+=unnamedplus
     endif
 endif
-

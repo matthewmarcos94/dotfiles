@@ -222,3 +222,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export PATH="/Users/matthew/opt/miniconda3/bin:$PATH"
+
+eval "$(direnv hook zsh)"
+
+clear
