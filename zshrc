@@ -145,8 +145,8 @@ alias ytd="youtube-dl"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
 alias portblocker="lsof -i"  # portblocker <portNumber>
 alias helpers="cd ~/helpers"
-alias db="pushd ~/helpers/database-containers && dup && popd"
-alias dbd="pushd ~/helpers/database-containers && ddown && popd"
+alias db="pushd ~/helpers/database-containers && dup || popd"
+alias dbd="pushd ~/helpers/database-containers && ddown || popd"
 
 
 function mcd() {
