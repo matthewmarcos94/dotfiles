@@ -13,17 +13,15 @@ export TERM=xterm-256color
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export SERVICE_ACCOUNTS_FOLDER="/Users/matthew/helpers/service_account_keys"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.tmux:$PATH"
-export PATH="$PATH:/Users/matthewmarcos/.dotnet/tools"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
 export PATH="$PATH:$HOME/helpers/bin"
-
+# export PATH="$PATH:$HOME/helpers/google-cloud-sdk/bin"
 
 # GOENV
 export GOENV_ROOT="$HOME/.goenv"
@@ -80,6 +78,7 @@ plugins=(
     extract
     git
     history
+    history-substring-search
     npm
     osx
     rsync
@@ -147,14 +146,12 @@ alias portblocker="lsof -i"  # portblocker <portNumber>
 alias helpers="cd ~/helpers"
 alias db="pushd ~/helpers/database-containers && dup || popd"
 alias dbd="pushd ~/helpers/database-containers && ddown || popd"
+alias sshconfig="vim $HOME/.ssh/config"
 
 
 function mcd() {
     mkdir $1 && cd $1
 }
-
-bindkey -v
-# bindkey '^R' history-incremental-search-backward
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -174,9 +171,6 @@ setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killedpath=(~/.zsh/completion $fpath)
 setopt    completealiases
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -201,3 +195,14 @@ eval "$(direnv hook zsh)"
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
+
+# bindkey -v
+# bindkey '^R' history-incremental-search-backward
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/matthew/helpers/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matthew/helpers/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/matthew/helpers/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matthew/helpers/google-cloud-sdk/completion.zsh.inc'; fi

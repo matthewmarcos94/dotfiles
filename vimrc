@@ -78,6 +78,9 @@ call plug#begin()
     Plug 'noah/vim256-color'
 call plug#end()
 
+" FZF
+set rtp+=/usr/local/opt/fzf
+
 " Statusline ------------------------------------------------------------------
 set laststatus=2           "always show the status line
 set modeline               "enables file specific settings
@@ -152,3 +155,5 @@ if has("clipboard")
         set clipboard+=unnamedplus
     endif
 endif
+" Fix paste bug triggered by the above inoremaps
+set t_BE=
