@@ -64,11 +64,10 @@ call plug#begin()
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
     Plug 'aaronj1335/underscore-templates.vim'
-    Plug 'https://github.com/AndrewRadev/splitjoin.vim'
+    Plug 'AndrewRadev/splitjoin.vim'
     Plug 'godlygeek/tabular'
     Plug 'Valloric/YouCompleteMe'
     Plug 'justinmk/vim-sneak'
-    " Plug 'wellle/targets.vim'
     Plug 'rking/ag.vim'
     Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
     Plug 'python-mode/python-mode'
@@ -109,6 +108,7 @@ set viewdir=$HOME/.tmp/vim/view/     " view   files directory
 set splitbelow
 set splitright
 set relativenumber
+set paste
 
 " Required for Markdown Preview https://github.com/JamshedVesuna/vim-markdown-preview
 let vim_markdown_preview_github=1
@@ -147,9 +147,7 @@ source ~/dotfiles/shortcuts.vimrc
 " share clipboard with the system
 if has("clipboard")
     set clipboard=unnamed " copy to the system clipboard
-
     if has("unnamedplus") " X11 support
         set clipboard+=unnamedplus
     endif
 endif
-

@@ -13,23 +13,20 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.tmux:$PATH"
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/snap/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$HOME/bin/jdk1.8.0_181/bin:$PATH"
 export PATH="$HOME/miniconda3/bin:$PATH"
 export PATH="$HOME/helpers/bin:$PATH"
-export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$HOME/go/bin"
 export HISTTIMEFORMAT="%d/%m/%y %T"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( virtualenv anaconda dir vcs)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time root_indicator background_jobs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv anaconda dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 POWERLEVEL9K_TIME_BACKGROUND=green
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
@@ -90,6 +87,7 @@ plugins=(
     direnv
     dotenv
     extract
+    gcloud
     git
     history
     npm
@@ -106,7 +104,7 @@ plugins=(
 export AUTO_NOTIFY_THRESHOLD=20
 export AUTO_NOTIFY_TITLE="Hey! \`%command\` has just finished"
 export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
-AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn" "tmux")
+AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn" "tmux" "gcloud")
 
 # User configuration
 
@@ -123,22 +121,22 @@ else
 fi
 
 alias work="cd $HOME/Code"
-alias notebook="cd $HOME/Code/notebooks"
+alias notebooks="cd $HOME/Code/notebooks"
 alias helpers="cd $HOME/helpers"
 alias powerup="sudo apt update -y ; sudo apt upgrade -y"
 alias wget="wget -c"
-alias vs="codium"
-alias vimrc="vim ~/.vimrc"
-alias zshrc="vim ~/.zshrc && source ~/.zshrc"
-alias ll='ls -alFh'
-alias la='ls -A'
-alias l='ls -CFA'
-alias c='clear'
+alias vs="code"
+alias vimrc="vim $HOME/.vimrc"
+alias zshrc="vim $HOME/.zshrc && source $HOME/.zshrc"
+alias ll="ls -alFh"
+alias la="ls -A"
+alias l="ls -CFA"
+alias c="clear"
 alias tmux="tmux -2"
-alias setclip='xclip -selection clipboard'
-alias getclip='xclip -selection clipboard -o'
-alias getpwd='pwd | setclip'
-alias v='vim'
+alias setclip="xclip -selection clipboard"
+alias getclip="xclip -selection clipboard -o"
+alias getpwd="pwd | setclip"
+alias v="vim"
 alias sa="source activate"
 alias sd="conda deactivate"
 alias conda-ls="conda info --envs"
@@ -147,20 +145,11 @@ alias dup="docker-compose up -d"
 alias ddown="docker-compose down"
 alias drs="docker-compose restart"
 alias gbrd="git branch | grep -v "master" | xargs git branch -D"
-alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
-alias savessh='ssh-add ~/.ssh/id_rsa'
-alias ts="echo /Users/matthewmarcos/Code/TomorrowSuper/build"
-alias serve="/Users/matthewmarcos/miniconda2/envs/py37/bin/python -m http.server"
+alias docker-rb="docker-compose -f docker-compose.yml build --force-rm"
+alias savessh="ssh-add $HOME/.ssh/id_rsa"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
-alias sshconf="vim $HOME/.ssh/config"
-
-function cr() {
-    docker exec -it $1 "/usr/local/apache2/htdocs/vendor/drupal/console/bin/drupal cr"
-}
-
-function checkcommands() {
-    fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;  }' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10
-}
+alias sshconfig="vim $HOME/.ssh/config"
+alias getrsa="cat $HOME/.ssh/id_rsa.pub | setclip"
 
 function mcd() {
     mkdir $1 && cd $1
@@ -187,7 +176,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # add this configuration to ~/.zshrc
-export HISTFILE=~/.zsh_history  # ensure history file visibility
+export HISTFILE=$HOME/.zsh_history  # ensure history file visibility
 export HH_CONFIG=hicolor        # get more colors
 
 export LC_ALL=en_US.UTF-8
@@ -206,10 +195,11 @@ setopt    incappendhistory  #Immediately append to the history file, not just wh
 setopt completealiases
 
 source $ZSH/oh-my-zsh.sh
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+export GOOGLE_APPLICATION_CREDENTIALS=""
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/matthewmarcos/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matthewmarcos/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matthewmarcos/google-cloud-sdk/completion.zsh.inc'; fi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
