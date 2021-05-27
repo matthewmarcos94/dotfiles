@@ -45,11 +45,10 @@ call plug#begin()
     Plug 'https://github.com/scrooloose/nerdtree'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/Valloric/MatchTagAlways'
-    Plug 'https://github.com/derekwyatt/vim-scala'
     Plug 'https://github.com/jiangmiao/auto-pairs'
     Plug 'https://github.com/airblade/vim-gitgutter'
     Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'terryma/vim-multiple-cursors'
+	" Plug 'terryma/vim-multiple-cursors'
     Plug 'mxw/vim-jsx'
     Plug 'altercation/vim-colors-solarized'
     Plug 'https://github.com/osyo-manga/vim-over'
@@ -65,11 +64,10 @@ call plug#begin()
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
     Plug 'aaronj1335/underscore-templates.vim'
-    Plug 'https://github.com/AndrewRadev/splitjoin.vim'
+    Plug 'AndrewRadev/splitjoin.vim'
     Plug 'godlygeek/tabular'
-    Plug 'Valloric/YouCompleteMe'
+    " Plug 'Valloric/YouCompleteMe'
     Plug 'justinmk/vim-sneak'
-    " Plug 'wellle/targets.vim'
     Plug 'rking/ag.vim'
     Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
     Plug 'python-mode/python-mode'
@@ -110,6 +108,7 @@ set viewdir=$HOME/.tmp/vim/view/     " view   files directory
 set splitbelow
 set splitright
 set relativenumber
+set paste
 
 " Required for Markdown Preview https://github.com/JamshedVesuna/vim-markdown-preview
 let vim_markdown_preview_github=1
@@ -131,7 +130,7 @@ let vim_markdown_preview_github=1  " Github markdown
 let vim_markdown_preview_browser='Firefox Quantum'  " Use Firefox as the default browser
 
 " Misc Settings ---------------------------------------------------------------
-set wildignore=*.dll,*.o,*.bak,*.pyc,*.jpg,*.gif,*.png,*.pyo
+set wildignore=*.dll,*.o,*.bak,*.pyc,*.jpg,*.gif,*.png,*.pyo,.DS_Store
 
 " Make YCM go away after completing
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -141,7 +140,103 @@ set clipboard=unnamedplus
 let g:python_highlight_all = 1
 let g:python_version_2 = 1
 
-" Additional sources
-source ~/dotfiles/abbrev.vimrc
-source ~/dotfiles/shortcuts.vimrc
+" share clipboard with the system
+if has("clipboard")
+    set clipboard=unnamed " copy to the system clipboard
+    if has("unnamedplus") " X11 support
+        set clipboard+=unnamedplus
+    endif
+endif
 
+let mapleader = "\<Space>"
+let g:user_emmet_leader_key='<C-e>'
+
+" SplitJoin
+nnoremap <Leader>j :SplitjoinJoin<cr>
+nnoremap <Leader>k :SplitjoinSplit<cr>
+
+" Reindent everything - Pls set with depending on filetype
+nnoremap <Leader>i ggVG=<ESC>
+
+"Clear the line
+nnoremap -d 0D
+inoremap <C-d> <ESC>ddi
+
+" Newline above or below cursor
+nnoremap -o o<ESC>0Dk
+nnoremap -O O<ESC>0Dj<ESC>
+
+" Line movement
+nnoremap - ddp
+nnoremap _ ddkP
+nnoremap L $
+nnoremap H ^
+vnoremap L $h
+vnoremap H ^
+
+" Quick-escape to normal mode
+" inoremap jj <esc> -> start forgetting this
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+" Better indention
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" multiple tabs
+noremap tn :tabnew<CR>
+noremap tj :tabnext<CR>
+noremap tk :tabprev<CR>
+
+" leader key remaps
+nnoremap <leader>e :edit $MYVIMRC<CR>
+nnoremap <leader>r :source $MYVIMRC<CR>
+nnoremap <Leader>rs :RunInInteractiveShell<space>
+nnoremap <leader>vs :tabnew $MYVIMRC<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap :Q :q<CR>
+nnoremap <leader>q! :q!<CR>
+nnoremap <leader>wq :wq<CR>
+" nnoremap <leader>wqa :wqa<CR>
+nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
+" vnoremap <leader>y :w ! xclip -i -sel c<CR><CR>
+" nnoremap <leader>y <S-V>:w ! xclip -i -sel c<CR><CR>
+" vnoremap <leader>p :r ! xclip -o -sel -c<CR>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" double leader = toggle fold
+noremap <leader><leader> za
+
+"FZF remap
+nnoremap <C-p> :Files<CR>
+
+"Silver Surfer
+nnoremap <C-f> :Ag<CR>
+
+"Vim Markdown Preview
+let vim_markdown_preview_hotkey='<C-m>'
+
+"These are to cancel the default behavior of d, D, c, C
+"  to put the text they delete in the default register.
+"  Note that this means e.g. "ad won't copy the text into
+"  register a anymore.  You have to explicitly yank it.
+" nnoremap d "_d
+" vnoremap d "_d
+" nnoremap D "_D
+" vnoremap D "_D
+" nnoremap c "_c
+" vnoremap c "_c
+" nnoremap C "_C
+" vnoremap C "_C
+
+nnoremap > >>
+nnoremap < <<
