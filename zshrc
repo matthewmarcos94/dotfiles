@@ -27,7 +27,7 @@ export HISTTIMEFORMAT="%d/%m/%y %T"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv anaconda dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 POWERLEVEL9K_TIME_BACKGROUND=green
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
@@ -40,7 +40,7 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
 POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
-POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_MODE='nerdfont-complete'
 
 export UPDATE_ZSH_DAYS=30
 
@@ -78,7 +78,6 @@ ZSH_TMUX_AUTOSTART="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    auto-notify
     battery
     colorize
     command-not-found
@@ -93,7 +92,6 @@ plugins=(
     npm
     safe-paste
     vi-mode
-    zsh-256color
     zsh-autosuggestions
     you-should-use
     zsh-syntax-highlighting
@@ -203,3 +201,5 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/
 
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
