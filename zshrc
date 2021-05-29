@@ -131,8 +131,8 @@ alias la="ls -A"
 alias l="ls -CFA"
 alias c="clear"
 alias tmux="tmux -2"
-alias setclip="xclip -selection clipboard"
-alias getclip="xclip -selection clipboard -o"
+alias setclip="clip.exe"
+alias getclip="powershell.exe Get-Clipboard"
 alias getpwd="pwd | setclip"
 alias v="vim"
 alias sa="source activate"
@@ -169,9 +169,8 @@ function containerize() {
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # add this configuration to ~/.zshrc
 export HISTFILE=$HOME/.zsh_history  # ensure history file visibility
